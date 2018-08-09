@@ -1,4 +1,10 @@
 page-home {
+    .image-container {
+        min-height: 200px;
+        background-size: cover;
+    }
+}
+
 .segment-button {
     background-color: map-get($colors, appTheme ) !important;
     color:#ffff !important;
