@@ -88,5 +88,5 @@ $colors: (
 @import "roboto";
 @import "noto-sans";
 
-$toolbar-background: map-get($colors, appTheme );
-$toolbar-background:map-get($colors, appTheme);
+$segment-button-md-background-color:#77cfa8;
+$segment-button-md-opacity: 1;

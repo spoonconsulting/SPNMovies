@@ -1,44 +1,43 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="appTheme">
     <ion-title>
-      SPN MOVIES 
+      SPN MOVIES
     </ion-title>
   </ion-navbar>
-  <div>
-      <ion-segment>
-        <ion-segment-button>
-          LATEST
-        </ion-segment-button>
-        <ion-segment-button>
-         POPULAR MOVIES
-        </ion-segment-button>
-      </ion-segment>
-    </div>
+
+  <ion-segment color="light">
+    <ion-segment-button value="latest">
+      LATEST
+    </ion-segment-button>
+    <ion-segment-button value="popular">
+      POPULAR MOVIES
+    </ion-segment-button>
+  </ion-segment>
 </ion-header>
 
 
-<ion-content >
-    <div >
-        <ion-grid >
-          <ion-row>
-            <ion-col col-4 col-md-4 col-xl-3 *ngFor="let movie of movies" >              
-                <ion-card class="movie-card">
-                  <ion-card-content class="movie-card-content">
-                      <div class="image-container" [style.background-image]="'url('+movie.posterUrl+')'"></div>
-                      <div class="movie-card-description" > {{movie.name}} </div>
-                  </ion-card-content>
-                </ion-card>  
-            </ion-col> 
-          </ion-row>
-        </ion-grid>
-      </div>
-      <ion-fab right bottom>
-          <button ion-fab class="floating-favorite-button">
-            <ion-icon >
-              <div style="text-align:center">
-                <fa-icon icon="star"></fa-icon>
-              </div>
-            </ion-icon>
-          </button>
-        </ion-fab>
+<ion-content>
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 col-md-4 col-xl-3 *ngFor="let movie of movies">
+          <ion-card class="movie-card">
+            <ion-card-content class="movie-card-content">
+              <div class="image-container" [style.background-image]="'url('+movie.posterUrl+')'"></div>
+              <div class="movie-card-description"> {{movie.name}} </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-fab right bottom>
+    <button ion-fab class="floating-favorite-button">
+      <ion-icon>
+        <div style="text-align:center">
+          <fa-icon icon="star"></fa-icon>
+        </div>
+      </ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>
