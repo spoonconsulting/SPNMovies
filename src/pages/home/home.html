@@ -1,14 +1,33 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      SPN MOVIES
     </ion-title>
   </ion-navbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="segment" ion-text color="primary">
+      <ion-segment-button value="latest">LATEST</ion-segment-button>
+       <ion-segment-button value="popular" ion-text color="primary">POPULAR MOVIES</ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <div [ngSwitch]="segment">
+    <div *ngSwitchCase="'latest'">
+      <div *ngFor="let item of movies | async">
+        <movie-card [item]="item"></movie-card>
+      </div>
+    </div>
+    <div *ngSwitchCase="'popular'">
+         popular
+         <ion-segment [(ngModel)]="selectedName" *ngFor="let i of rows">
+            <ng-container *ngFor="let name of names | slice:(i*segmentsPerRow):(i+1)*segmentsPerRow">
+              <ion-segment-button value="{{name.name}}">
+                {{name.name}}
+              </ion-segment-button>
+            </ng-container>
+          </ion-segment>
+    </div>
+</div>  
 </ion-content>

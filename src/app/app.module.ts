@@ -9,10 +9,13 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MoviesProvider } from '../providers/movies/movies';
 
+import { MovieCardComponent } from '../components/movie-card/movie-card'
+
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    MovieCardComponent 
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,8 @@ import { MoviesProvider } from '../providers/movies/movies';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    MovieCardComponent
   ],
   providers: [
     StatusBar,

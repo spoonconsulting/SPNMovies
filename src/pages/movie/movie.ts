@@ -1,3 +1,6 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
 /**
  * @author 	SC (SRA)
  * @version 1.0
@@ -13,16 +16,18 @@
  *--------------------------------------------------------------------------------------
  * 
  */
-export class Movie{
-    id: String;
-    url: String;
-    title: String;
-    cover: String;
+@IonicPage()
+@Component({
+  selector: 'page-movie',
+  templateUrl: 'movie.html',
+})
+export class MoviePage {
 
-    constructor(obj: any){
-        this.id = obj.id;
-        this.url = obj.url;
-        this.title = obj.title_long;
-        this.cover = obj.medium_cover_image;
-    }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad MoviePage');
+  }
+
 }
