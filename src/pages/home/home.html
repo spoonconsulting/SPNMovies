@@ -1,43 +1,51 @@
 <ion-header>
-  <ion-navbar color="appTheme">
-    <ion-title>
-      SPN MOVIES
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar color="appTheme">
+        <ion-title>
+            SPN MOVIES
+        </ion-title>
+    </ion-navbar>
+    <ion-segment color="light" [(ngModel)]="currentTab">
+        <ion-segment-button value="latest">
+            LATEST
+        </ion-segment-button>
+        <ion-segment-button value="topRated">
+            TOP RATED MOVIES
+        </ion-segment-button>
+    </ion-segment>
 
-  <ion-segment color="light">
-    <ion-segment-button value="latest">
-      LATEST
-    </ion-segment-button>
-    <ion-segment-button value="popular">
-      POPULAR MOVIES
-    </ion-segment-button>
-  </ion-segment>
 </ion-header>
 
 
 <ion-content>
-  <div>
-    <ion-grid>
-      <ion-row>
-        <ion-col col-4 col-md-4 col-xl-3 *ngFor="let movie of movies">
-          <ion-card class="movie-card">
-            <ion-card-content class="movie-card-content">
-              <div class="image-container" [style.background-image]="'url('+movie.posterUrl+')'"></div>
-              <div class="movie-card-description"> {{movie.name}} </div>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-  <ion-fab right bottom>
-    <button ion-fab class="floating-favorite-button">
-      <ion-icon>
-        <div style="text-align:center">
-          <fa-icon icon="star"></fa-icon>
+    <div [ngSwitch]="currentTab">
+        <div *ngSwitchCase="'latest'">
+            <div>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-4 col-md-4 col-xl-3 *ngFor="let movie of movies">
+                            <ion-card class="movie-card">
+                                <ion-card-content class="movie-card-content">
+                                    <div class="image-container" [style.background-image]="'url('+movie.posterUrl+')'"></div>
+                                    <div class="movie-card-description"> {{movie.name}} </div>
+                                </ion-card-content>
+                            </ion-card>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
         </div>
-      </ion-icon>
-    </button>
-  </ion-fab>
+        <div *ngSwitchCase="'topRated'">
+            TOP MOVIES
+        </div>
+    </div>
+
+    <ion-fab right bottom>
+        <button ion-fab class="floating-favorite-button">
+            <ion-icon>
+                <div style="text-align:center">
+                    <fa-icon icon="star"></fa-icon>
+                </div>
+            </ion-icon>
+        </button>
+    </ion-fab>
 </ion-content>
