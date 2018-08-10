@@ -15,7 +15,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
     IonicModule.forRoot(MyApp),
     FontAwesomeModule
   ],
