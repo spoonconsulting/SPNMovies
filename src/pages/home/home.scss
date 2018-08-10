@@ -18,3 +18,6 @@ page-home {
         color: #fff !important;
       }
 }
+.floating-favorite-button{
+    background-color: map-get($map: $colors, $key: appTheme) !important;
+}

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -9,6 +10,8 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
 
     public movies = [];
+    title = 'app';
+    faStar = faStar;
 
     constructor(public navCtrl: NavController) {
         this.movies = [{
