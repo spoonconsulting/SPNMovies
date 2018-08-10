@@ -19,6 +19,12 @@ page-home {
         border-bottom: 2px solid #fff !important;
         border-left: 0 !important;
         color: #fff !important;
+        background-color: map-get($map: $colors, $key:appTheme );
+        border-top: 0 ;
+        border-right: 0;
+        border-bottom: 2px solid #fff;
+        border-left: 0 ;
+        color: #fff ;
       }
 }
 
@@ -35,6 +41,7 @@ page-home {
 
 .floating-favorite-button{
     background-color: map-get($map: $colors, $key: appTheme) !important;
+    background-color: map-get($map: $colors, $key: appTheme);
 }
 
 .movie-card-description{
