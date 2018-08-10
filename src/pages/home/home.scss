@@ -1,12 +1,15 @@
 page-home {
     .image-container {
         min-height: 200px;
+        min-height: 150px;
         background-size: cover;
+        height: 75%;
     }
 }
 
 .segment-button {
     background-color: map-get($colors, appTheme ) !important;
+    background-color:map-get($colors, appTheme ) !important;
     color:#ffff !important;
 
     &.activated, &.segment-activated {
@@ -18,6 +21,23 @@ page-home {
         color: #fff !important;
       }
 }
+
+.movie-card{
+    padding:0px;
+    margin: 0px;
+    width:100%;
+}
+
+.movie-card-content{
+    margin: 0px;
+    padding:0px;
+}
+
 .floating-favorite-button{
     background-color: map-get($map: $colors, $key: appTheme) !important;
+}
+
+.movie-card-description{
+    margin:5px;
+    height: 50px;;
 }

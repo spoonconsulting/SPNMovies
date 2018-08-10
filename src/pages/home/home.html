@@ -7,10 +7,13 @@
   <div>
       <ion-segment>
         <ion-segment-button value="kittens">
+        <ion-segment-button>
           LATEST
         </ion-segment-button>
         <ion-segment-button value="puppies">
           MY FAVORITES
+        <ion-segment-button>
+         POPULAR MOVIES
         </ion-segment-button>
       </ion-segment>
     </div>
@@ -22,18 +25,16 @@
         <ion-grid >
           <ion-row>
             <ion-col col-4 col-md-4 col-xl-3 *ngFor="let movie of movies" >              
-                <ion-card>
-                  <ion-card-content>
+                <ion-card class="movie-card">
+                  <ion-card-content class="movie-card-content">
                       <div class="image-container" [style.background-image]="'url('+movie.posterUrl+')'"></div>
-                    {{movie.name}}
+                      <div class="movie-card-description" > {{movie.name}} </div>
                   </ion-card-content>
                 </ion-card>  
-            </ion-col>
-            
+            </ion-col> 
           </ion-row>
         </ion-grid>
       </div>
-  
       <ion-fab right bottom>
           <button ion-fab class="floating-favorite-button">
             <ion-icon >
