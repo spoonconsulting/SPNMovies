@@ -3,27 +3,19 @@ $app-direction: ltr;
 @import "ionic.globals";
 
 $colors: (
-  primary:    #77cfa8,
+  primary:    blue,
   secondary:  #0a1b0f,
   danger:     #f53d3d,
   light:      white,
   dark:       #222,
-  apptheme:   #005319
+  appTheme:   #77cfa8
 );
 @import "ionic.theme.default";
 @import "ionic.ionicons";
 // Fonts
 @import "roboto";
 @import "noto-sans";
-//$toolbar-background:#77cfa8;
+// $toolbar-md-background: map-get($colors, appTheme);
 //$segment-button-ios-background-color:#77cfa8;
-
-ion-title {
-  text-align: center;
-}
-
-$segment-button-text-color:white;
-
-$segment-button-color:white;
-
-$segment-button-md-border-bottom-color:white;
+$segment-button-md-background-color:#77cfa8;
+$segment-button-md-opacity: 1;
