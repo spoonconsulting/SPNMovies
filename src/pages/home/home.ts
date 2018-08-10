@@ -23,6 +23,18 @@ export class HomePage {
                 posterUrl: "http://thecatapi.com/api/images/get?format=src&type=png&name=tst"
             }
         ];
+       // var self= this;
+        for(var i of [1,2,3,4,5,6,7,8,9,10]){
+            console.log(this.movies);
+            var movie = {
+                name: `catMovie ${i}`,
+                posterUrl:`http://thecatapi.com/api/images/get?format=src&type=png&name=est_${i}`
+            };
+            
+           this.movies.push(movie);  
+
+        }
+        
     }
 
 }
