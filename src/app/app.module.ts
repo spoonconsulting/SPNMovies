@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import {MoviesGridComponent} from '../components/movies-grid/movies-grid';
+import { MovieService } from '../providers/movie-service';
 
 library.add(faStar);
 
@@ -22,6 +23,7 @@ library.add(faStar);
     BrowserModule,
     IonicModule.forRoot(MyApp),
     FontAwesomeModule
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,6 +34,7 @@ library.add(faStar);
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
+    MovieService
   ]
 })
 export class AppModule {}
