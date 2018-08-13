@@ -9,7 +9,7 @@
             LATEST
         </ion-segment-button>
         <ion-segment-button value="topRated">
-            TOP RATED MOVIES
+            TOP RATED
         </ion-segment-button>
     </ion-segment>
 
@@ -18,11 +18,11 @@
 
 <ion-content>
         <div [ngStyle]="{'visibility':(currentTab=='latest')?'visible':'hidden'}" class="movies-card-container">
-            <movies-grid></movies-grid>
+            <movies-grid [movies]="movieList"></movies-grid>
         </div>
 
         <div class="movies-card-container" [ngStyle]="{'visibility':(currentTab!='latest')?'visible':'hidden'}">
-            <movies-grid></movies-grid>
+            <movies-grid  [movies]="topRatedMovieList"></movies-grid>
         </div>
 
         <ion-fab right bottom>

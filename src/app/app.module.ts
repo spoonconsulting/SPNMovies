@@ -23,7 +23,7 @@ library.add(faStar);
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    FontAwesomeModule
+    FontAwesomeModule,
     HttpClientModule
   ],
   bootstrap: [IonicApp],
@@ -34,7 +34,7 @@ library.add(faStar);
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
     MovieService
   ]
 })

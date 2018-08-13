@@ -8,19 +8,14 @@ import { Movie } from '../../models/movie';
     templateUrl: 'home.html'
 })
 export class HomePage {
-    public lstMovie:Movie[];
+    public currentTab = "latest";
+    public movieList:Movie[];
+    public topRatedMovieList:Movie[];
 
-    
-    public currentTab="latest";
-
-    constructor(public navCtrl: NavController) {
-       
-        
     constructor(public navCtrl: NavController, public movieService: MovieService) {
         this.movieService.getMovies().subscribe(movies=>{
             console.log("got movies",movies);
-            
-            this.lstMovie=movies;
+            this.movieList=movies;
         });
     }
 
