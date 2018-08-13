@@ -17,14 +17,20 @@
     <div *ngSwitchCase="'latest'">
         <ion-grid no-padding class="home-gallery">
             <ion-row>
-                <ion-col col-4 *ngFor="let item of movies  | async"> <!-- JUST ADD A col-4 attribute -->
+                <ion-col col-4 *ngFor="let item of movies  | async"> 
                   <movie-card [item]="item"></movie-card>
                 </ion-col>
             </ion-row>
         </ion-grid>
     </div>
     <div *ngSwitchCase="'popular'">
-         popular
+        <ion-grid no-padding class="home-gallery">
+            <ion-row>
+                <ion-col col-4 *ngFor="let item of favorites  | async">
+                  <movie-card [item]="item"></movie-card>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
     </div>
 </div>  
 </ion-content>

@@ -26,29 +26,11 @@ import { Movie } from '../../providers/movies/model';
 export class HomePage {
   segment = 'latest';
   movies: Promise<Movie[]>;
-  names = [];
-  segmentsPerRow = 3;
-  rows = [];
-
+  favorites: Promise<Movie[]>;
 
   constructor(public navCtrl: NavController, public movProv: MoviesProvider) {
     this.initMoviesList();
-    this.names = [
-      {name: 'one'},
-      {name: 'two'},
-      {name: 'three'},
-      {name: 'four'},
-      {name: 'five'},
-      {name: 'six'},
-      {name: 'seven'},
-      {name: 'eight'},
-      {name: 'nine'},
-      {name: 'ten'},
-      {name: 'eleven'},
-      {name: 'twelve'}
-    ]
-    this.segmentsPerRow = 3
-    this.rows = Array.from(Array(Math.ceil(this.names.length / this.segmentsPerRow)).keys())
+    this.initFavoritesList();
   }
 
   /**
@@ -57,8 +39,15 @@ export class HomePage {
   initMoviesList(){
     this.movies =  this.movProv.getMovies().then((movies_) =>{
       console.log('movies:: ', movies_ );
-      this.rows = Array.from(Array(Math.ceil(movies_.length / this.segmentsPerRow)).keys())
       return movies_;
+    });
+  }
+
+  initFavoritesList(){
+    this.favorites = this.movies.then((movies_) => {
+      return movies_.filter((item) =>{
+        return item.rating > 7
+      });
     });
   }
 
