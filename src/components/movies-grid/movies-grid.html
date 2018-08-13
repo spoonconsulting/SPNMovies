@@ -1,0 +1,12 @@
+<ion-grid>
+  <ion-row>
+      <ion-col col-4 col-md-4 col-xl-3 *ngFor="let movie of movies">
+          <ion-card class="movie-card">
+              <ion-card-content class="movie-card-content">
+                  <div class="image-container" [style.background-image]="'url('+movie.posterUrl+')'"></div>
+                  <div class="movie-card-description"> {{movie.name}} </div>
+              </ion-card-content>
+          </ion-card>
+      </ion-col>
+  </ion-row>
+</ion-grid>

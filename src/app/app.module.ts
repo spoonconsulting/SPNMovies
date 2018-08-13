@@ -8,13 +8,15 @@ import { HomePage } from '../pages/home/home';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import {MoviesGridComponent} from '../components/movies-grid/movies-grid';
 
 library.add(faStar);
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    MoviesGridComponent
   ],
   imports: [
     BrowserModule,
