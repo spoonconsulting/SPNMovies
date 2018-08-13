@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+import { Component, OnInit, Input } from '@angular/core';
+import { Movie } from '../../models/movie';
+import { MovieService } from '../../providers/movie-service';
 /**
  * Generated class for the MoviesGridComponent component.
  *
@@ -25,5 +28,18 @@ export class MoviesGridComponent {
 
   }
   }
+export class MoviesGridComponent implements OnInit{
+  @Input() movies: Movie[];
+    constructor(private movieService: MovieService) {
+  
+    }
 
+    ngOnInit(): void {
+      this.getMovies();
+    }
+    
+    getMovies():void{
+      console.log("hey");
+      this.movieService.getMovies().subscribe(movies=>this.movies= movies);
+    }
 }

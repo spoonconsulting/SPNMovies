@@ -8,7 +8,8 @@ import { HomePage } from '../pages/home/home';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import {MoviesGridComponent} from '../components/movies-grid/movies-grid';
+import { MoviesGridComponent } from '../components/movies-grid/movies-grid';
+import { HttpClientModule }    from '@angular/common/http';
 import { MovieService } from '../providers/movie-service';
 
 library.add(faStar);
