@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { IonicPage, NavController, NavParams, Navbar } from 'ionic-angular';
+import { Movie } from '../../providers/movies/model';
 
 /**
  * @author 	SC (SRA)
@@ -22,12 +23,36 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'movie.html',
 })
 export class MoviePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  @ViewChild(Navbar) navBar: Navbar;
+  @ViewChild('d1') d1:ElementRef;
+  movieItem: Movie;
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public elementRef: ElementRef) {
+    this.movieItem = navParams.get('movieParam');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MoviePage');
+    console.log('this.movieItem:: ', this.movieItem);
+    this.navBar.backButtonClick = (e:UIEvent)=>{
+      // todo something
+      this.navCtrl.pop();
+     }
+
+     this.styleHeader();
+  }
+
+  styleHeader(){
+    this.d1.nativeElement.style.setProperty('background-image','url('+this.movieItem.cover+')');
+    this.d1.nativeElement.style.setProperty('background-size','cover');
+    this.d1.nativeElement.style.setProperty('background-position','center center');
+    this.d1.nativeElement.style.setProperty('background-repeat','no-repeat');
+    this.d1.nativeElement.style.setProperty('height', '30%');
+    this.d1.nativeElement.style.setProperty('color', '#fff !important');
+  }
+
+  searchToggle(){
+    console.log('search');
   }
 
 }

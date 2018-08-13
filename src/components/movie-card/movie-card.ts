@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Movie } from '../../providers/movies/model';
+import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
+import { Movie } from '../../providers/movies/model';
+import { MoviePage } from '../../pages/movie/movie';
 /**
  * Generated class for the MovieCardComponent component.
  *
@@ -18,7 +20,7 @@ export class MovieCardComponent {
   text: string = 'Hello World';
   value: Movie;
 
-  constructor() {
+  constructor(private navCtrl: NavController) {
     console.log('Hello MovieCardComponent Component');
     // this.text = 'Hello World';
     // this.text = this.title;
@@ -27,6 +29,13 @@ export class MovieCardComponent {
 
   ngOnInit() {
     this.value = this.item;
+  }
+
+  openDetails(movieParam) {
+      console.log('crap');
+      this.navCtrl.push(MoviePage,{
+        'movieParam': movieParam
+      });
   }
 
 }

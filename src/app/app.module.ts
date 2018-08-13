@@ -7,15 +7,21 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { MoviePage } from '../pages/movie/movie';
 import { MoviesProvider } from '../providers/movies/movies';
 
-import { MovieCardComponent } from '../components/movie-card/movie-card'
+import { MovieCardComponent } from '../components/movie-card/movie-card';
+import { MovieCardDetailComponent } from '../components/movie-card-detail/movie-card-detail';
+import { MovieCardDescriptionComponent } from '../components/movie-card-description/movie-card-description';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    MovieCardComponent 
+    MoviePage,
+    MovieCardComponent,
+    MovieCardDetailComponent,
+    MovieCardDescriptionComponent 
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,10 @@ import { MovieCardComponent } from '../components/movie-card/movie-card'
   entryComponents: [
     MyApp,
     HomePage,
-    MovieCardComponent
+    MoviePage,
+    MovieCardComponent,
+    MovieCardDetailComponent,
+    MovieCardDescriptionComponent
   ],
   providers: [
     StatusBar,

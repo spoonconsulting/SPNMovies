@@ -18,11 +18,22 @@ export class Movie{
     url: String;
     title: String;
     cover: String;
+    description: String;
+    genre: String;
+    rating: number;
+    mpa_rating: String;
+    duree: number;
 
     constructor(obj: any){
         this.id = obj.id;
         this.url = obj.url;
         this.title = obj.title_long;
         this.cover = obj.medium_cover_image;
+        this.description = obj.summary;
+        var genres = obj.genres;
+        this.genre = genres.toString();
+        this.rating = obj.rating;
+        this.duree = obj.runtime;
+        this.mpa_rating = obj.mpa_rating;
     }
 }

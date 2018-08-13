@@ -1,0 +1,27 @@
+<!-- Generated template for the MovieCardDetailComponent component -->
+<ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-row>
+          <ion-col col-4 col-33>
+              <img class="full-image" [src]="value.cover" />
+          </ion-col>
+          <ion-col col-8>
+              <ion-item>
+                  <ion-icon name="alarm"></ion-icon>  {{value.duree}} mins
+              </ion-item>
+
+              <ion-item>
+                  <ion-icon name="star"></ion-icon>  {{value.mpa_rating}}
+              </ion-item>
+              <ion-item>
+                  <ion-icon name="star"></ion-icon> {{value.rating}}/10
+              </ion-item>
+              <ion-item>
+                  Genre:  {{value.genre}}
+              </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+  </ion-card-content>
+</ion-card>

@@ -15,19 +15,16 @@
 <ion-content padding>
   <div [ngSwitch]="segment">
     <div *ngSwitchCase="'latest'">
-      <div *ngFor="let item of movies | async">
-        <movie-card [item]="item"></movie-card>
-      </div>
+        <ion-grid no-padding class="home-gallery">
+            <ion-row>
+                <ion-col col-4 *ngFor="let item of movies  | async"> <!-- JUST ADD A col-4 attribute -->
+                  <movie-card [item]="item"></movie-card>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
     </div>
     <div *ngSwitchCase="'popular'">
          popular
-         <ion-segment [(ngModel)]="selectedName" *ngFor="let i of rows">
-            <ng-container *ngFor="let name of names | slice:(i*segmentsPerRow):(i+1)*segmentsPerRow">
-              <ion-segment-button value="{{name.name}}">
-                {{name.name}}
-              </ion-segment-button>
-            </ng-container>
-          </ion-segment>
     </div>
 </div>  
 </ion-content>
