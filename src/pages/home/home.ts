@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { MovieService } from '../../providers/movie-service';
 import { Movie } from '../../models/movie';
+import { MovieDetailPage } from '../../pages/movie-detail/movie-detail';
 
 @Component({
     selector: 'page-home',
@@ -11,6 +12,7 @@ export class HomePage {
     public currentTab = "latest";
     public movieList: Movie[];
     public topRatedMovieList: Movie[];
+    self=this;
 
     constructor(public navCtrl: NavController, public movieService: MovieService, private alertController: AlertController) {
         this.movieList = [];
@@ -34,5 +36,8 @@ export class HomePage {
                 }).present()
             );
         }
+    }
+    private didSelectMovie(movie: Movie){
+        this.navCtrl.push(MovieDetailPage,{"movie":movie});
     }
 }

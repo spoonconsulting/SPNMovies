@@ -11,6 +11,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { MoviesGridComponent } from '../components/movies-grid/movies-grid';
 import { HttpClientModule }    from '@angular/common/http';
 import { MovieService } from '../providers/movie-service';
+import { MovieDetailPage } from '../pages/movie-detail/movie-detail';
 
 library.add(faStar);
 
@@ -18,7 +19,8 @@ library.add(faStar);
   declarations: [
     MyApp,
     HomePage,
-    MoviesGridComponent
+    MoviesGridComponent,
+    MovieDetailPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ library.add(faStar);
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    MovieDetailPage
   ],
   providers: [
     StatusBar,
