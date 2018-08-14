@@ -5,10 +5,10 @@
         </ion-title>
     </ion-navbar>
     <ion-segment color="light" [(ngModel)]="currentTab">
-        <ion-segment-button value="latest">
+        <ion-segment-button value="latest" (click)="loadMovies(false)">
             LATEST
         </ion-segment-button>
-        <ion-segment-button value="topRated">
+        <ion-segment-button value="topRated" (click)="loadMovies(true)">
             TOP RATED
         </ion-segment-button>
     </ion-segment>
