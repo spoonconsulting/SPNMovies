@@ -13,14 +13,16 @@ export class HomePage {
     public movieList: Movie[];
     public topRatedMovieList: Movie[];
 
-    constructor(public navCtrl: NavController, public movieService: MovieService, private alertController: AlertController) {
+    constructor(public navCtrl: NavController,
+        public movieService: MovieService,
+        private alertController: AlertController) {
         this.movieList = [];
         this.topRatedMovieList = [];
         this.loadMovies(false);
     }
 
     private loadMovies(isTopRated) {
-        if (this.movieList.length == 0 || this.topRatedMovieList.length == 0) {
+        if (!this.movieList.length || !this.topRatedMovieList.length) {
             this.movieService.getMovies(isTopRated).subscribe(movies => {
                     if (this.currentTab == "latest") {
                         this.movieList = movies;
