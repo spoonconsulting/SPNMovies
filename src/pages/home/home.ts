@@ -13,22 +13,24 @@ export class HomePage {
     public topRatedMovieList: Movie[];
 
     constructor(public navCtrl: NavController, public movieService: MovieService, private alertController: AlertController) {
+        this.movieList = [];
+        this.topRatedMovieList = [];
         this.loadMovies(false);
     }
 
     private loadMovies(isTopRated) {
-        console.log("loadMovies");
-        this.movieService.getMovies(isTopRated).subscribe(movies => {
-            console.log("loadMovies res tab: ", this.currentTab);
-            if (this.currentTab == "latest") {
-                this.movieList = movies;
-            } else {
-                this.topRatedMovieList = movies;
-            }
-        }, err => this.alertController.create({
-            title: 'Cannot Fetch Movies',
-            subTitle: 'We are sorry our server is under maintenance.',
-            buttons: ['OK']
-        }).present());
+        if ( this.movieList.length == 0 || this.topRatedMovieList.length == 0) {
+            this.movieService.getMovies(isTopRated).subscribe( movies => {
+                if (this.currentTab == "latest") {
+                    this.movieList = movies;
+                } else {
+                    this.topRatedMovieList = movies;
+                }
+            }, err => this.alertController.create({
+                title: 'Error',
+                subTitle: 'Unable to fetch movies.\nPlease try again later.',
+                buttons: ['OK']
+            }).present());
+        }
     }
 }
