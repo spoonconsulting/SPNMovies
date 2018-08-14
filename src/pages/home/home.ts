@@ -19,18 +19,20 @@ export class HomePage {
     }
 
     private loadMovies(isTopRated) {
-        if ( this.movieList.length == 0 || this.topRatedMovieList.length == 0) {
-            this.movieService.getMovies(isTopRated).subscribe( movies => {
-                if (this.currentTab == "latest") {
-                    this.movieList = movies;
-                } else {
-                    this.topRatedMovieList = movies;
-                }
-            }, err => this.alertController.create({
-                title: 'Error',
-                subTitle: 'Unable to fetch movies.\nPlease try again later.',
-                buttons: ['OK']
-            }).present());
+        if (this.movieList.length == 0 || this.topRatedMovieList.length == 0) {
+            this.movieService.getMovies(isTopRated).subscribe(movies => {
+                    if (this.currentTab == "latest") {
+                        this.movieList = movies;
+                    } else {
+                        this.topRatedMovieList = movies;
+                    }
+                }, err =>
+                this.alertController.create({
+                    title: 'Error',
+                    subTitle: 'Unable to fetch movies.\nPlease try again later.',
+                    buttons: ['OK']
+                }).present()
+            );
         }
     }
 }

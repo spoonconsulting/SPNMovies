@@ -12,17 +12,38 @@ export class MovieService {
     constructor(public http: HttpClient) {}
 
     getMovies(orderByRating: boolean): Observable < Movie[] > {
-        this.movieUrl =orderByRating?this.movieUrlByRating: this.movieUrlByLatest;
+        this.movieUrl = orderByRating ? this.movieUrlByRating : this.movieUrlByLatest;
         return new Observable(observer => {
             this.http.get(this.movieUrl).subscribe((response: any) => {
                 console.log("response json: ", response);
-                let moviesData = response.data.movies;
-                if (!moviesData)
+                if (!response.data)
                     return observer.error();
-                let moviesToReturn = [];
-                moviesData.forEach(responseMovie => moviesToReturn.push(new Movie(responseMovie)));
-                observer.next(moviesToReturn);
-            }, error=> observer.error(error));
+                observer.next(this.serializeMovies(response));
+            }, error => {
+                 this.getMockMovies().subscribe(mockMovies=>{
+                    observer.next(mockMovies);
+                 },err=> observer.error(err));
+                  
+            })
+
+        });
+    }
+
+    private serializeMovies(response: any): Movie[] {
+        let moviesData = response.data.movies;
+        let moviesToReturn = [];
+        moviesData.forEach(responseMovie => moviesToReturn.push(new Movie(responseMovie)));
+        return moviesToReturn;
+    }
+    
+    private getMockMovies(): Observable < Movie[] > {
+        return new Observable(observer => {
+            this.http.get('assets/data/movies.json').subscribe((response: any) => {
+                console.log("response json: ", response);
+                if (!response.data)
+                    return observer.error();
+                observer.next(this.serializeMovies(response));
+            }, error => observer.error(error));
 
         });
     }
