@@ -6,16 +6,14 @@ import { NavController } from 'ionic-angular';
     selector: 'movies-grid',
     templateUrl: 'movies-grid.html'
 })
-export class MoviesGridComponent{
-  @Input() movies: Movie[];
-  @Input() parentComponent: any;
+export class MoviesGridComponent {
+    @Input() movies: Movie[];
+    @Input() parentComponent: any;
 
-  constructor(public navCtrl: NavController){}
+    constructor(public navCtrl: NavController) {}
 
-  cardTapped(movie: Movie){
-    console.log("Tapped");
-    if(this.parentComponent){
-      (<any>this.parentComponent).didSelectMovie(movie);
+    cardTapped(movie: Movie) {
+        if (this.parentComponent)
+            ( < any > this.parentComponent).didSelectMovie(movie);
     }
-  }
 }

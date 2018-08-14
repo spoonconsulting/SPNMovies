@@ -12,7 +12,6 @@ export class HomePage {
     public currentTab = "latest";
     public movieList: Movie[];
     public topRatedMovieList: Movie[];
-    self=this;
 
     constructor(public navCtrl: NavController, public movieService: MovieService, private alertController: AlertController) {
         this.movieList = [];
@@ -37,7 +36,7 @@ export class HomePage {
             );
         }
     }
-    private didSelectMovie(movie: Movie){
-        this.navCtrl.push(MovieDetailPage,{"movie":movie});
+    private didSelectMovie(movie: Movie) {
+        this.navCtrl.push(MovieDetailPage, { "movie": movie });
     }
 }

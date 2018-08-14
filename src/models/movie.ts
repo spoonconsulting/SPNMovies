@@ -4,9 +4,9 @@ export class Movie {
     rating: number;
     genres: string[];
     description: string;
-    coverImage:string;
-    duration:string;
-    backgroundImage:string;
+    coverImage: string;
+    duration: string;
+    backgroundImage: string;
 
     constructor(data: any) {
         if (data) {
