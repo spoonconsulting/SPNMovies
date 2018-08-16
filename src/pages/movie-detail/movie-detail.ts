@@ -19,4 +19,8 @@ export class MovieDetailPage {
         console.log('');
     }
 
+    backButton() {
+        this.navCtrl.pop();
+    }
+
 }

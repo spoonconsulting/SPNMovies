@@ -36,7 +36,7 @@ export class MovieService {
         return moviesToReturn;
     }
     
-    private getMockMovies(): Observable < Movie[] > {
+    public getMockMovies(): Observable < Movie[] > {
         return new Observable(observer => {
             this.http.get('assets/data/movies.json').subscribe((response: any) => {
                 console.log("response json: ", response);

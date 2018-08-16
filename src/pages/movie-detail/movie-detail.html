@@ -1,42 +1,56 @@
-<ion-header>
-
-    <ion-navbar>
-
-    </ion-navbar>
-
-</ion-header>
-
-
+<ion-fab left-top>
+    <ion-icon class="arrow-back-button" name="arrow-back" (click)="backButton()"></ion-icon>
+</ion-fab>
+<ion-fab top right>
+    <ion-icon class="search-option" name="search"></ion-icon>
+</ion-fab>
 <ion-content style="background-color: rgb(241, 241, 241)">
-    <div class="background-image-container" [style.background-image]="'url('+movie.backgroundImage+')'"></div>
+    <div class="background-image-container" [style.background-image]="'url('+movie.backgroundImage+')'">
+        <div class="movie-title-on-background">{{movie.title}}</div>
+    </div>
     <button ion-button icon-start class="add-favorite-button">
-        <ion-icon name="star"></ion-icon>
-        Add to favorites
+        <ion-icon name="star" class="favorite-star-button-icon"></ion-icon>
+        <p>Add to favorites</p>
     </button>
     <ion-card>
         <ion-card-content class="card-content-detail">
             <ion-grid class="movie-detail-grid">
-                <ion-row>
-                    <ion-col col-5 class="movie-cover-image-column">
-                        <img [src]="movie.coverImage" />
+                <ion-row class="movie-detail-grid-detail-container">
+                    <ion-col col-4 class="movie-cover-image-column">
+                        <img class="movie-cover-image" [src]="movie.coverImage" />
                     </ion-col>
-                    <ion-col>
+                    <ion-col class="movie-details-right">
                         <ion-row class="movie-detail-text-row">
-                            <span>name</span>
+                            <ion-icon>
+                                <ion-icon name="alarm" class="rating-icon black-icon"></ion-icon>
+                            </ion-icon><span>{{movie.duration}} minutes</span>
                         </ion-row>
                         <ion-row class="movie-detail-text-row">
-                            <span>name 2 </span>
+                                <ion-icon class="rating-icon" name="information-circle"></ion-icon>
+                            <span>{{movie.mpaRating}}</span>
                         </ion-row>
                         <ion-row class="movie-detail-text-row">
-                            <span>name 3</span>
+                            <ion-icon>
+                                <ion-icon name="star" class="rating-icon "></ion-icon>
+                            </ion-icon><span>{{movie.rating}}</span>
                         </ion-row>
                         <ion-row class="movie-detail-text-row">
-                                <span>name 4</span>
-                            </ion-row>
+                            <span class="movie-detail-text-row-container">
+                                <div class="genre-text-movie">Genres:</div>
+                                <div class="genre-item-list">&nbsp;{{movie.genres}}</div>
+                           
+                            </span>
+                        </ion-row>
                     </ion-col>
 
                 </ion-row>
             </ion-grid>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-content>
+            <h3 class="movie-detail-description">Description:</h3>
+            <p>{{movie.description}}</p>
         </ion-card-content>
     </ion-card>
 </ion-content>
