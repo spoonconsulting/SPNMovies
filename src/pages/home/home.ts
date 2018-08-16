@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MoviesProvider } from '../../providers/movies/movies';
 
-import { Movie } from '../../providers/movies/model';
+import { Movie, ErrorMessage } from '../../providers/movies/model';
 
 /**
  * @author 	SC (SRA)
@@ -25,8 +25,11 @@ import { Movie } from '../../providers/movies/model';
 })
 export class HomePage {
   segment = 'latest';
-  movies: Promise<Movie[]>;
-  favorites: Promise<Movie[]>;
+  movies: Promise<void | Movie[] | ErrorMessage>;
+  errorMessage: ErrorMessage;
+  
+  favorites: Promise<void | Movie[] | ErrorMessage>;
+  errorMessageFavorites: ErrorMessage;
 
   constructor(public navCtrl: NavController, public movProv: MoviesProvider) {
     this.initMoviesList();
@@ -37,17 +40,19 @@ export class HomePage {
    * initialised list of movies to show in latest section
    */
   initMoviesList(){
-    this.movies =  this.movProv.getMovies().then((movies_) =>{
+    this.movies  = this.movProv.getMovies().then((movies_) =>{
       console.log('movies:: ', movies_ );
       return movies_;
+    }).catch(error => {
+      this.errorMessage = error;
     });
   }
 
   initFavoritesList(){
-    this.favorites = this.movies.then((movies_) => {
-      return movies_.filter((item) =>{
-        return item.rating > 7
-      });
+    this.favorites = this.movProv.getMoviesBy("minimum_rating", 7).then((movies_) => {
+      return movies_;
+    }).catch(error => {
+      this.errorMessageFavorites = error;
     });
   }
 

@@ -31,9 +31,19 @@ export class Movie{
         this.cover = obj.medium_cover_image;
         this.description = obj.summary;
         var genres = obj.genres;
-        this.genre = genres.toString();
+        if(genres != undefined) this.genre = genres.toString();
         this.rating = obj.rating;
         this.duree = obj.runtime;
         this.mpa_rating = obj.mpa_rating;
+    }
+}
+
+export class ErrorMessage{
+    message: string;
+    status: number;
+
+    constructor(obj: any){
+        this.message = obj.message;
+        this.status = obj.status;
     }
 }

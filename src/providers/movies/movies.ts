@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from '../../../node_modules/rxjs/Observable';
-import { Movie } from './model';
+import { Movie, ErrorMessage } from './model';
 
 /**
  * @author 	SC (SRA)
@@ -21,32 +21,49 @@ import { Movie } from './model';
 @Injectable()
 export class MoviesProvider {
   moviesData: Observable<any>;
-  movies:  Movie[] = [];
+  movies:  Movie[];
   
   constructor(public http: HttpClient) {
-    this.init();
-  }
-
-  /**
-   * initialise list of movies from API
-   * 
-   */
-  init(){
-    this.moviesData = this.http.get('https://yts.am/api/v2/list_movies.json');
   }
 
   /*
-  * get movies from data return by API
+  * initialise list of movies from API
   * return promise list movie 
   */
-  getMovies(): Promise<Movie[]>{
+  getMovies(): Promise<Movie[] | ErrorMessage>{
+    let movies = [];
     return new Promise((resolve, reject) => {
-      this.moviesData.subscribe(data =>{
-        let moviesList = data['data']['movies'];
+      this.http.get('https://yts.am/api/v2/list_movies.json').toPromise()
+      .then(response => {
+        console.log(response);
+        let moviesList = response['data']['movies'];
         moviesList.forEach(element => {
-          this.movies.push(new Movie(element));
+          movies.push(new Movie(element));
         });
-        resolve(this.movies);
+        resolve(movies);
+      }).catch(error =>{
+        let error_ = new ErrorMessage(error);
+        console.log(error_);
+        reject(error_);
+      });
+    })
+  }
+
+  getMoviesBy(param, value):Promise<Movie[] | ErrorMessage>{
+   let favoritesMovies = [];
+    return new Promise((resolve, reject) => {
+      this.http.get('https://yts.am/api/v2/list_movies.json?'+param+'='+value).toPromise()
+      .then(response => {
+        console.log(response);
+        let moviesList = response['data']['movies'];
+        moviesList.forEach(element => {
+          favoritesMovies.push(new Movie(element));
+        });
+        resolve(favoritesMovies);
+      }).catch(error =>{
+        let error_ = new ErrorMessage(error);
+        console.log(error_);
+        reject(error_);
       });
     })
   }

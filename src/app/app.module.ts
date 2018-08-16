@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { MoviePage } from '../pages/movie/movie';
 import { MoviesProvider } from '../providers/movies/movies';
 
+import { ErrorCardComponent } from '../components/error-card/error-card';
 import { MovieCardComponent } from '../components/movie-card/movie-card';
 import { MovieCardDetailComponent } from '../components/movie-card-detail/movie-card-detail';
 import { MovieCardDescriptionComponent } from '../components/movie-card-description/movie-card-description';
@@ -21,7 +22,8 @@ import { MovieCardDescriptionComponent } from '../components/movie-card-descript
     MoviePage,
     MovieCardComponent,
     MovieCardDetailComponent,
-    MovieCardDescriptionComponent 
+    MovieCardDescriptionComponent,
+    ErrorCardComponent 
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { MovieCardDescriptionComponent } from '../components/movie-card-descript
     MoviePage,
     MovieCardComponent,
     MovieCardDetailComponent,
-    MovieCardDescriptionComponent
+    MovieCardDescriptionComponent,
+    ErrorCardComponent
   ],
   providers: [
     StatusBar,

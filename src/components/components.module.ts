@@ -3,21 +3,25 @@ import { IonicPageModule } from 'ionic-angular';
 import { MovieCardComponent } from './movie-card/movie-card';
 import { MovieCardDetailComponent } from './movie-card-detail/movie-card-detail';
 import { MovieCardDescriptionComponent } from './movie-card-description/movie-card-description';
+import { ErrorCardComponent } from './error-card/error-card';
 @NgModule({
 	declarations: [
 		MovieCardComponent,
 		MovieCardDetailComponent,
-    	MovieCardDescriptionComponent
+    	MovieCardDescriptionComponent,
+    	ErrorCardComponent
 	],
 	imports: [
 		IonicPageModule.forChild(MovieCardComponent),
 		IonicPageModule.forChild(MovieCardDetailComponent),
-		IonicPageModule.forChild(MovieCardDescriptionComponent)
+		IonicPageModule.forChild(MovieCardDescriptionComponent),
+		IonicPageModule.forChild(ErrorCardComponent)
 	],
 	exports: [
 		MovieCardComponent,
 		MovieCardDetailComponent,
-    	MovieCardDescriptionComponent
+    	MovieCardDescriptionComponent,
+    	ErrorCardComponent
 	],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
