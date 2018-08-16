@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { MoviesProvider } from '../../providers/movies/movies';
 
-import { Movie, ErrorMessage } from '../../providers/movies/model';
+import { MoviesProvider } from '../../providers/movies/movies';
+import { Movie, ErrorMessage, ErrorLog } from '../../providers/movies/model';
+import { SaveMovieProvider } from '../../providers/save-movie/save-movie';
 
 /**
  * @author 	SC (SRA)
@@ -25,13 +26,20 @@ import { Movie, ErrorMessage } from '../../providers/movies/model';
 })
 export class HomePage {
   segment = 'latest';
+  showLog: boolean = true;
   movies: Promise<void | Movie[] | ErrorMessage>;
   errorMessage: ErrorMessage;
   
   favorites: Promise<void | Movie[] | ErrorMessage>;
   errorMessageFavorites: ErrorMessage;
 
-  constructor(public navCtrl: NavController, public movProv: MoviesProvider) {
+  constructor(public navCtrl: NavController, 
+    public movProv: MoviesProvider, 
+    public saveMovieProv: SaveMovieProvider) {
+      this.initBD();
+  }
+
+  ngOnInit(){
     this.initMoviesList();
     this.initFavoritesList();
   }
@@ -41,7 +49,7 @@ export class HomePage {
    */
   initMoviesList(){
     this.movies  = this.movProv.getMovies().then((movies_) =>{
-      console.log('movies:: ', movies_ );
+      new ErrorLog('initMoviesList', movies_, this.showLog);
       return movies_;
     }).catch(error => {
       this.errorMessage = error;
@@ -49,10 +57,26 @@ export class HomePage {
   }
 
   initFavoritesList(){
-    this.favorites = this.movProv.getMoviesBy("minimum_rating", 7).then((movies_) => {
+    this.favorites = this.saveMovieProv.getFavorite().then((movies_) => {
+      new ErrorLog('initFavoritesList', movies_, this.showLog);
       return movies_;
     }).catch(error => {
+      new ErrorLog('initFavoritesList', error, this.showLog);
       this.errorMessageFavorites = error;
+    });
+    // this.favorites = this.movProv.getMoviesBy("minimum_rating", 7).then((movies_) => {
+    //   new ErrorLog('initFavoritesList', movies_, this.showLog);
+    //   return movies_;
+    // }).catch(error => {
+    //   this.errorMessageFavorites = error;
+    // });
+  }
+
+  initBD(){
+    this.saveMovieProv.createFavoriteTable().then((response) =>{
+      new ErrorLog('initBD', response, this.showLog);
+    }).catch(error => {
+      new ErrorLog('initBD', error, this.showLog);
     });
   }
 

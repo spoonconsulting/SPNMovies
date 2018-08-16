@@ -7,7 +7,7 @@
   <ion-toolbar>
     <ion-segment [(ngModel)]="segment" ion-text color="primary">
       <ion-segment-button value="latest">LATEST</ion-segment-button>
-       <ion-segment-button value="popular" ion-text color="primary">POPULAR MOVIES</ion-segment-button>
+       <ion-segment-button value="popular" ion-text color="primary" (click)="initFavoritesList()">POPULAR MOVIES</ion-segment-button>
     </ion-segment>
   </ion-toolbar>
 </ion-header>

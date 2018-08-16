@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, Navbar } from 'ionic-angular';
-import { Movie } from '../../providers/movies/model';
+import { Movie, ErrorLog } from '../../providers/movies/model';
+import { SaveMovieProvider } from '../../app';
 
 /**
  * @author 	SC (SRA)
@@ -26,8 +27,12 @@ export class MoviePage {
   @ViewChild(Navbar) navBar: Navbar;
   @ViewChild('d1') d1:ElementRef;
   movieItem: Movie;
+  isFavorite: boolean;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public elementRef: ElementRef) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public elementRef: ElementRef, 
+    public saveMovieProv: SaveMovieProvider) {
     this.movieItem = navParams.get('movieParam');
   }
 
@@ -38,8 +43,16 @@ export class MoviePage {
       // todo something
       this.navCtrl.pop();
      }
-
      this.styleHeader();
+
+    this.saveMovieProv.isInsideFavorite(this.movieItem)
+    .then(res =>{
+      this.isFavorite = res
+      new ErrorLog('MoviePage - isFavorite', this.isFavorite, true);
+    })
+    .catch(error => {
+      new ErrorLog('MoviePage - error', error, true);
+    });
   }
 
   styleHeader(){
@@ -53,6 +66,14 @@ export class MoviePage {
 
   searchToggle(){
     console.log('search');
+  }
+
+  saveToFavorite(){
+    this.saveMovieProv.saveToFavoriteTable(this.movieItem).then(response => {
+      new ErrorLog('saveToFavorite', response, true);
+    }).catch(e => {
+      new ErrorLog('saveToFavorite', e, true);
+    });
   }
 
 }

@@ -15,7 +15,7 @@
   </ion-header>
   
   <ion-content padding>
-      <button ion-button full color="secondary">Add to favorite</button>
+      <button ion-button full color="secondary" (click)="saveToFavorite()" [disabled]="isFavorite">Add to favorite</button>
       <movie-card-detail [item]="movieItem"></movie-card-detail>
       <movie-card-description [item]="movieItem"></movie-card-description>
   </ion-content>

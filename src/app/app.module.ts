@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
 
 import * as c from './';
+import { SQLite } from '../../node_modules/@ionic-native/sqlite';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import * as c from './';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    c.MoviesProvider
+    c.MoviesProvider,
+    SQLite,
+    c.SaveMovieProvider
   ]
 })
 export class AppModule {}

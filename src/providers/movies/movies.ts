@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from '../../../node_modules/rxjs/Observable';
-import { Movie, ErrorMessage } from './model';
+import { Movie, ErrorMessage, ErrorLog } from './model';
 
 /**
  * @author 	SC (SRA)
@@ -22,6 +22,7 @@ import { Movie, ErrorMessage } from './model';
 export class MoviesProvider {
   moviesData: Observable<any>;
   movies:  Movie[];
+  showLog: boolean = true;
   
   constructor(public http: HttpClient) {
   }
@@ -35,34 +36,38 @@ export class MoviesProvider {
     return new Promise((resolve, reject) => {
       this.http.get('https://yts.am/api/v2/list_movies.json').toPromise()
       .then(response => {
-        console.log(response);
+        new ErrorLog('getMovies', response, this.showLog);
         let moviesList = response['data']['movies'];
         moviesList.forEach(element => {
-          movies.push(new Movie(element));
+          movies.push(Movie.fromData(element));
         });
         resolve(movies);
       }).catch(error =>{
         let error_ = new ErrorMessage(error);
-        console.log(error_);
+        new ErrorLog('getMovies', error_, this.showLog);
         reject(error_);
       });
     })
   }
 
+  /*
+  * initialise list of movies from API by paramaters
+  * return promise list movie 
+  */
   getMoviesBy(param, value):Promise<Movie[] | ErrorMessage>{
    let favoritesMovies = [];
     return new Promise((resolve, reject) => {
       this.http.get('https://yts.am/api/v2/list_movies.json?'+param+'='+value).toPromise()
       .then(response => {
-        console.log(response);
+        new ErrorLog('getMoviesBy', response, this.showLog);
         let moviesList = response['data']['movies'];
         moviesList.forEach(element => {
-          favoritesMovies.push(new Movie(element));
+          favoritesMovies.push(Movie.fromData(element));
         });
         resolve(favoritesMovies);
       }).catch(error =>{
         let error_ = new ErrorMessage(error);
-        console.log(error_);
+        new ErrorLog('getMoviesBy', error_, this.showLog);
         reject(error_);
       });
     })

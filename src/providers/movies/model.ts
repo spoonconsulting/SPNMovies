@@ -13,8 +13,20 @@
  *--------------------------------------------------------------------------------------
  * 
  */
+interface MovieData {
+    id: number;
+    url: String;
+    title_long: String;
+    medium_cover_image: String;
+    summary: String;
+    genres: String[];
+    rating: number;
+    mpa_rating: String;
+    runtime: number;
+}
+
 export class Movie{
-    id: String;
+    id: number;
     url: String;
     title: String;
     cover: String;
@@ -24,17 +36,38 @@ export class Movie{
     mpa_rating: String;
     duree: number;
 
-    constructor(obj: any){
-        this.id = obj.id;
-        this.url = obj.url;
-        this.title = obj.title_long;
-        this.cover = obj.medium_cover_image;
-        this.description = obj.summary;
-        var genres = obj.genres;
-        if(genres != undefined) this.genre = genres.toString();
-        this.rating = obj.rating;
-        this.duree = obj.runtime;
-        this.mpa_rating = obj.mpa_rating;
+    // if(genres != undefined) this.genre = genres.toString();
+
+    static fromData(data: MovieData) {
+        let { id, url, title_long, medium_cover_image, summary, genres, rating, mpa_rating, runtime } = data 
+        return new this(
+            id,
+            url,
+            title_long,
+            medium_cover_image,
+            summary,
+            this.genre(genres),
+            rating,
+            runtime,
+            mpa_rating
+        )
+    }
+
+    static genre(genres){
+        if(genres != undefined) return genres.toString();
+        return '';
+    }
+
+    constructor(id: number, url: String, title: String, cover: String, description: String, genre: String, rating: number, duree: number, mpa_rating: String){
+        this.id = id;
+        this.url =  url;
+        this.title =  title;
+        this.cover = cover;
+        this.description = description;
+        this.genre = genre;
+        this.rating = rating;
+        this.duree = duree;
+        this.mpa_rating = mpa_rating;
     }
 }
 
@@ -45,5 +78,21 @@ export class ErrorMessage{
     constructor(obj: any){
         this.message = obj.message;
         this.status = obj.status;
+    }
+}
+
+export class ErrorLog{
+    title: string;
+    message: any;
+    show: boolean;
+
+    constructor(title: string, message: any, show: boolean){
+        this.title = title;
+        this.message = message;
+        this.show = show;
+
+        if(this.show){
+            console.log(this.title + ':: ',this.message);
+        }
     }
 }
