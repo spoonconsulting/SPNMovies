@@ -1,3 +1,30 @@
-page-movie-detail {
+.background-image-container{
+    width: 100%;
+    height: 200px;
+    margin:0px;
+}
 
+.add-favorite-button{
+    width: 92%;
+    margin-left: 4%;
+    margin-top: 10px;
+    background-color: map-get($map: $colors, $key: appTheme);
+}
+
+.movie-card-detail{
+    background-color: white;
+    margin: 10px;
+    width: 390px;
+    height: 200px;
+}
+
+.image-container-detail{
+    min-height: 200px;
+    background-size: cover;
+}
+
+.card-content-detail{
+    margin: 0px;
+    padding:0px;
+    display: table-row;
 }
