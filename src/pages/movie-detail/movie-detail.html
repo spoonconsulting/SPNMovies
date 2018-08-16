@@ -13,19 +13,30 @@
         <ion-icon name="star"></ion-icon>
         Add to favorites
     </button>
-    <ion-card class="movie-card-detail">
+    <ion-card>
         <ion-card-content class="card-content-detail">
-            <div style="width:133px;height:100%;display: table-cell;">
-                <div class="image-container-detail" [style.background-image]="'url('+movie.coverImage+')'"></div>
-            </div>
+            <ion-grid class="movie-detail-grid">
+                <ion-row>
+                    <ion-col col-5 class="movie-cover-image-column">
+                        <img [src]="movie.coverImage" />
+                    </ion-col>
+                    <ion-col>
+                        <ion-row class="movie-detail-text-row">
+                            <span>name</span>
+                        </ion-row>
+                        <ion-row class="movie-detail-text-row">
+                            <span>name 2 </span>
+                        </ion-row>
+                        <ion-row class="movie-detail-text-row">
+                            <span>name 3</span>
+                        </ion-row>
+                        <ion-row class="movie-detail-text-row">
+                                <span>name 4</span>
+                            </ion-row>
+                    </ion-col>
 
-            <div style="display: table-cell;width: 256px;">
-
-                <div style="display: table-cell;">yoo</div>
-
-                <div style="display: table-cell;">too</div>
-
-            </div>
+                </ion-row>
+            </ion-grid>
         </ion-card-content>
     </ion-card>
 </ion-content>
