@@ -5,46 +5,38 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { MoviePage } from '../pages/movie/movie';
-import { MoviesProvider } from '../providers/movies/movies';
-
-import { ErrorCardComponent } from '../components/error-card/error-card';
-import { MovieCardComponent } from '../components/movie-card/movie-card';
-import { MovieCardDetailComponent } from '../components/movie-card-detail/movie-card-detail';
-import { MovieCardDescriptionComponent } from '../components/movie-card-description/movie-card-description';
+import * as c from './';
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage,
-    MoviePage,
-    MovieCardComponent,
-    MovieCardDetailComponent,
-    MovieCardDescriptionComponent,
-    ErrorCardComponent 
+    c.MyApp,
+    c.HomePage,
+    c.MoviePage,
+    c.MovieCardComponent,
+    c.MovieCardDetailComponent,
+    c.MovieCardDescriptionComponent,
+    c.ErrorCardComponent 
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(c.MyApp),
     HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage,
-    MoviePage,
-    MovieCardComponent,
-    MovieCardDetailComponent,
-    MovieCardDescriptionComponent,
-    ErrorCardComponent
+    c.MyApp,
+    c.HomePage,
+    c.MoviePage,
+    c.MovieCardComponent,
+    c.MovieCardDetailComponent,
+    c.MovieCardDescriptionComponent,
+    c.ErrorCardComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MoviesProvider
+    c.MoviesProvider
   ]
 })
 export class AppModule {}

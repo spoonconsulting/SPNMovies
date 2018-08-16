@@ -1,0 +1,1 @@
+export { MoviesProvider } from './movies/movies';
