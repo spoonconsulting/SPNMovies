@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { Movie, Log, ErrorMessage } from '../movies/model';
-import { resolveDefinition } from '../../../node_modules/@angular/core/src/view/util';
 
 /*
   Generated class for the SaveMovieProvider provider.

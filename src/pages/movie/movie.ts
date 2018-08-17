@@ -45,14 +45,18 @@ export class MoviePage {
      }
      this.styleHeader();
 
-    this.saveMovieProv.isInsideFavorite(this.movieItem)
-    .then(res =>{
-      this.isFavorite = res
-      new Log('MoviePage - isFavorite', this.isFavorite, true);
-    })
-    .catch(error => {
-      new Log('MoviePage - error', error, true);
-    });
+    // this.saveMovieProv.isInsideFavorite(this.movieItem)
+    // .then(res =>{
+    //   this.isFavorite = res
+    //   new Log('MoviePage - isFavorite', this.isFavorite, true);
+    // })
+    // .catch(error => {
+    //   new Log('MoviePage - error', error, true);
+    // });
+  }
+
+  back(){
+    this.navCtrl.pop();
   }
 
   styleHeader(){

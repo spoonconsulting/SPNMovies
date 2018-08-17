@@ -36,12 +36,12 @@ export class HomePage {
   constructor(public navCtrl: NavController, 
     public movProv: MoviesProvider, 
     public saveMovieProv: SaveMovieProvider) {
-      this.initBD();
+      // this.initBD();
   }
 
   ngOnInit(){
     this.initMoviesList();
-    this.initFavoritesList();
+    // this.initFavoritesList();
   }
 
   /**

@@ -1,22 +1,45 @@
-<ion-header  #d1>
-    <ion-navbar>
-        <!-- <img [src]="movieItem.cover"/> -->
+<ion-header>
+    <ion-navbar class="toolbar-hide" color="appTheme">
         <ion-buttons end>
-            <button (click)="searchToggle()">
-              <ion-icon name="search"></ion-icon>
+            <button ion-button icon-only color="white">
+                <ion-icon name="search"></ion-icon>
             </button>
-          </ion-buttons>
+        </ion-buttons>
     </ion-navbar>
-    <ion-toolbar>
-        <ion-title>
-            {{movieItem.title}}
-        </ion-title>
-    </ion-toolbar>
   </ion-header>
   
-  <ion-content padding>
-      <button ion-button full color="secondary" (click)="saveToFavorite()" [disabled]="isFavorite">Add to favorite</button>
-      <movie-card-detail [item]="movieItem"></movie-card-detail>
-      <movie-card-description [item]="movieItem"></movie-card-description>
+  <ion-content>
+      <div class="parent" #d1>
+        <ion-row>
+            <ion-col>
+                <ion-buttons start>
+                    <button class="btn title" ion-button icon-only (click)="back()">
+                        <ion-icon name="arrow-back"></ion-icon>
+                    </button>
+                </ion-buttons>
+            </ion-col>
+            <ion-col>
+                <ion-buttons end>
+                        <button class="btn title" ion-button icon-only>
+                            <ion-icon name="search"></ion-icon>
+                        </button>
+                </ion-buttons>
+            </ion-col>
+        </ion-row>
+        <ion-row class="bottom" padding>
+            <label class="title">{{movieItem.title}}</label>
+        </ion-row>
+      </div>
+
+      <div padding>
+        <div class="margin-btn">
+            <button ion-button full icon-start color="appTheme" (click)="saveToFavorite()" [disabled]="isFavorite">
+                    <ion-icon name="star"></ion-icon>
+                Add to favorite
+            </button>
+        </div>
+        <movie-card-detail [item]="movieItem"></movie-card-detail>
+        <movie-card-description [item]="movieItem"></movie-card-description>
+        </div>
   </ion-content>
   

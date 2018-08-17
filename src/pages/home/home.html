@@ -1,18 +1,24 @@
-<ion-header primary>
-  <ion-navbar>
-    <ion-title>
-      SPN MOVIES
-    </ion-title>
-  </ion-navbar>
-  <ion-toolbar>
-    <ion-segment [(ngModel)]="segment" ion-text color="primary">
+<ion-header>
+  <ion-toolbar color="appTheme">
+    <ion-navbar>
+      <ion-title>
+        SPN MOVIES
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only color="white">
+          <ion-icon name="search"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+    <ion-segment [(ngModel)]="segment" ion-text color="white">
       <ion-segment-button value="latest">LATEST</ion-segment-button>
-       <ion-segment-button value="popular" ion-text color="primary" (click)="initFavoritesList()">POPULAR MOVIES</ion-segment-button>
+       <ion-segment-button value="popular" ion-text (click)="initFavoritesList()">POPULAR MOVIES</ion-segment-button>
     </ion-segment>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content >
   <div [ngSwitch]="segment">
     <div *ngSwitchCase="'latest'">
         <ion-grid no-padding class="home-gallery">
@@ -34,5 +40,8 @@
             </ion-row>
         </ion-grid>
     </div>
-</div>  
+</div>
+<ion-fab right bottom padding>
+    <button ion-fab color="appTheme"><ion-icon name="star"></ion-icon></button>
+  </ion-fab>  
 </ion-content>

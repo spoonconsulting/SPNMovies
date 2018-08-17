@@ -1,8 +1,55 @@
-.toolbar-background {
-    background: transparent !important;
-    color: #ffffff;
-}
+page-movie{
+    // .toolbar-background {
+    //     background-color: #77cfa8;
+    //   }
 
-ion-navbar.toolbar {
-    min-height: 30%;
+    .toolbar {
+        padding-bottom: 0px;
+    }
+
+    .title{
+        color: white;
+    }
+
+    // .toolbar-title{
+    //     color: white !important;
+    // }
+
+    .toolbar-hide{
+        display: none;
+    }
+
+    .scroll-content{
+        margin-top: 0;
+        padding: 0;
+    }
+
+    .btn{
+        background: black;
+        filter: alpha(opacity=70);
+        -moz-opacity: 0.7;
+        -khtml-opacity: 0.7;
+        opacity: 0.7;
+        height: 100%;
+    }
+
+    // .bottom {
+    //     line-height:normal;
+    //     display: inline-block;
+    //     vertical-align:bottom;
+    // }
+
+    .parent {
+        min-height: 30vh; /* set height as you need */
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .bottom {
+        margin-top: auto;
+    }
+
+    .margin-btn{
+        margin: 10px;
+    }
 }
