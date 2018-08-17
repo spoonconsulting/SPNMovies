@@ -71,17 +71,38 @@ export class Movie{
     }
 }
 
+
+interface ErrorData {
+    message: string;
+    status: number;
+}
+
 export class ErrorMessage{
     message: string;
     status: number;
 
-    constructor(obj: any){
-        this.message = obj.message;
-        this.status = obj.status;
+    static fromString(message: string){
+        return new this(
+            message,
+            0
+        )
+    }
+
+    static fromData(data: ErrorData) {
+        let { message, status } = data 
+        return new this(
+            message,
+            status
+        )
+    }
+
+    constructor(message: string, status: number){
+        this.message = message;
+        this.status = status;
     }
 }
 
-export class ErrorLog{
+export class Log{
     title: string;
     message: any;
     show: boolean;

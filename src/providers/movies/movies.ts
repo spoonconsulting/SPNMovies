@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from '../../../node_modules/rxjs/Observable';
-import { Movie, ErrorMessage, ErrorLog } from './model';
+import { Movie, ErrorMessage, Log } from './model';
 
 /**
  * @author 	SC (SRA)
@@ -36,15 +36,15 @@ export class MoviesProvider {
     return new Promise((resolve, reject) => {
       this.http.get('https://yts.am/api/v2/list_movies.json').toPromise()
       .then(response => {
-        new ErrorLog('getMovies', response, this.showLog);
+        new Log('getMovies', response, this.showLog);
         let moviesList = response['data']['movies'];
         moviesList.forEach(element => {
           movies.push(Movie.fromData(element));
         });
         resolve(movies);
       }).catch(error =>{
-        let error_ = new ErrorMessage(error);
-        new ErrorLog('getMovies', error_, this.showLog);
+        let error_ = ErrorMessage.fromData(error);
+        new Log('getMovies', error_, this.showLog);
         reject(error_);
       });
     })
@@ -59,15 +59,15 @@ export class MoviesProvider {
     return new Promise((resolve, reject) => {
       this.http.get('https://yts.am/api/v2/list_movies.json?'+param+'='+value).toPromise()
       .then(response => {
-        new ErrorLog('getMoviesBy', response, this.showLog);
+        new Log('getMoviesBy', response, this.showLog);
         let moviesList = response['data']['movies'];
         moviesList.forEach(element => {
           favoritesMovies.push(Movie.fromData(element));
         });
         resolve(favoritesMovies);
       }).catch(error =>{
-        let error_ = new ErrorMessage(error);
-        new ErrorLog('getMoviesBy', error_, this.showLog);
+        let error_ = ErrorMessage.fromData(error);
+        new Log('getMoviesBy', error_, this.showLog);
         reject(error_);
       });
     })

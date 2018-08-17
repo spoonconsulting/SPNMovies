@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
-import { Movie, ErrorLog, ErrorMessage } from '../movies/model';
+import { Movie, Log, ErrorMessage } from '../movies/model';
 import { resolveDefinition } from '../../../node_modules/@angular/core/src/view/util';
 
 /*
@@ -18,7 +18,7 @@ export class SaveMovieProvider {
   dbLocation = 'default';
 
   constructor(private sqlite: SQLite) {
-    new ErrorLog('SaveMovieProvider','Hello SaveMovieProvider Provider', true);
+    new Log('SaveMovieProvider','Hello SaveMovieProvider Provider', true);
   }
 
   /*
@@ -60,17 +60,17 @@ export class SaveMovieProvider {
     mpa_rating: String;
     duree: number;*/
   saveToFavoriteTable(e: Movie){
-    new ErrorLog('saveToFavoriteTable', e, true);
+    new Log('saveToFavoriteTable', e, true);
     return new Promise((resolve, reject) => {
       this.sqlite.create({
         name: this.dbName,
         location: this.dbLocation
       }).then((db: SQLiteObject) => {
           db.executeSql(this.queryInsert, [e.id, e.url, e.title, e.cover, e.description, e.genre, e.rating, e.mpa_rating, e.duree]).then(response => {
-            new ErrorLog('saveToFavoriteTable', response, true);
+            new Log('saveToFavoriteTable', response, true);
             resolve('success')
           }).catch(error => {
-            new ErrorLog('saveToFavoriteTable', error, true);
+            new Log('saveToFavoriteTable', error, true);
             reject(error);
           });
       })
@@ -90,10 +90,13 @@ export class SaveMovieProvider {
             }
             resolve(movies);
           }).catch(error => {
-            new ErrorLog('saveToFavoriteTable - error', error, true);
-            reject(new ErrorMessage(error));
+            new Log('getFavorite - error', error, true);
+            reject(ErrorMessage.fromString(error));
           });
-      })
+      }).catch(error => {
+        new Log('getFavorite - error', error, true);
+        reject(ErrorMessage.fromString(error));
+      });
     });
   }
 
@@ -110,8 +113,8 @@ export class SaveMovieProvider {
               resolve(false);
             }
           }).catch(error => {
-            new ErrorLog('saveToFavoriteTable - error', error, true);
-            reject(new ErrorMessage(error));
+            new Log('saveToFavoriteTable - error', error, true);
+            reject(ErrorMessage.fromData(error));
           });
       })
     });

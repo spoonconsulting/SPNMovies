@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, Navbar } from 'ionic-angular';
-import { Movie, ErrorLog } from '../../providers/movies/model';
+import { Movie, Log } from '../../providers/movies/model';
 import { SaveMovieProvider } from '../../app';
 
 /**
@@ -48,10 +48,10 @@ export class MoviePage {
     this.saveMovieProv.isInsideFavorite(this.movieItem)
     .then(res =>{
       this.isFavorite = res
-      new ErrorLog('MoviePage - isFavorite', this.isFavorite, true);
+      new Log('MoviePage - isFavorite', this.isFavorite, true);
     })
     .catch(error => {
-      new ErrorLog('MoviePage - error', error, true);
+      new Log('MoviePage - error', error, true);
     });
   }
 
@@ -70,9 +70,9 @@ export class MoviePage {
 
   saveToFavorite(){
     this.saveMovieProv.saveToFavoriteTable(this.movieItem).then(response => {
-      new ErrorLog('saveToFavorite', response, true);
+      new Log('saveToFavorite', response, true);
     }).catch(e => {
-      new ErrorLog('saveToFavorite', e, true);
+      new Log('saveToFavorite', e, true);
     });
   }
 
