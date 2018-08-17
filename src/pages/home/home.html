@@ -12,19 +12,14 @@
             TOP RATED
         </ion-segment-button>
     </ion-segment>
-
 </ion-header>
-
-
 <ion-content>
     <div [ngStyle]="{'visibility':(currentTab=='latest')?'visible':'hidden'}" class="movies-card-container">
         <movies-grid [movies]="movieList" [parentComponent]="this"></movies-grid>
     </div>
-
     <div class="movies-card-container" [ngStyle]="{'visibility':(currentTab!='latest')?'visible':'hidden'}">
         <movies-grid [movies]="topRatedMovieList" [parentComponent]="this"></movies-grid>
     </div>
-
     <ion-fab right bottom>
         <button ion-fab class="floating-favorite-button">
             <ion-icon>

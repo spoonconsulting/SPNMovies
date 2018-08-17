@@ -99,12 +99,14 @@ page-movie-detail {
     .add-favorite-button p{
         font-size: 18px;
     }
+
     .genre-item-list{
         white-space: nowrap; 
         width: 147px; 
         overflow: hidden;
         text-overflow: ellipsis; 
     }
+    
     .movie-detail-text-row-container > div {
         float: left;
     }

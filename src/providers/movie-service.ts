@@ -15,14 +15,14 @@ export class MovieService {
         this.movieUrl = orderByRating ? this.movieUrlByRating : this.movieUrlByLatest;
         return new Observable(observer => {
             this.http.get(this.movieUrl).subscribe((response: any) => {
-                console.log("response json: ", response);
                 if (!response.data)
                     return observer.error();
                 observer.next(this.serializeMovies(response));
             }, error => {
-                 this.getMockMovies().subscribe(mockMovies=>{
-                    observer.next(mockMovies);
-                 },err=> observer.error(err));
+                //  this.getMockMovies().subscribe(mockMovies=>{
+                //     observer.next(mockMovies);
+                //  },
+                err=> error(err);
                   
             })
 
@@ -36,16 +36,15 @@ export class MovieService {
         return moviesToReturn;
     }
     
-    public getMockMovies(): Observable < Movie[] > {
-        return new Observable(observer => {
-            this.http.get('assets/data/movies.json').subscribe((response: any) => {
-                console.log("response json: ", response);
-                if (!response.data)
-                    return observer.error();
-                observer.next(this.serializeMovies(response));
-            }, error => observer.error(error));
+    // public getMockMovies(): Observable < Movie[] > {
+    //     return new Observable(observer => {
+    //         this.http.get('assets/data/movies.json').subscribe((response: any) => {
+    //             if (!response.data)
+    //                 return observer.error();
+    //             observer.next(this.serializeMovies(response));
+    //         }, error => observer.error(error));
 
-        });
-    }
+    //     });
+    // }
 
 }

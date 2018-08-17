@@ -23,26 +23,24 @@
                         <ion-row class="movie-detail-text-row">
                             <ion-icon>
                                 <ion-icon name="alarm" class="rating-icon black-icon"></ion-icon>
-                            </ion-icon><span>{{movie.duration}} minutes</span>
+                            </ion-icon><span>{{movie.duration?movie.duration:"Not available"}} minutes</span>
                         </ion-row>
                         <ion-row class="movie-detail-text-row">
                                 <ion-icon class="rating-icon" name="information-circle"></ion-icon>
-                            <span>{{movie.mpaRating}}</span>
+                            <span>{{movie.mpaRating?movie.mpaRating:"Not available"}}</span>
                         </ion-row>
                         <ion-row class="movie-detail-text-row">
                             <ion-icon>
                                 <ion-icon name="star" class="rating-icon "></ion-icon>
-                            </ion-icon><span>{{movie.rating}}</span>
+                            </ion-icon><span>{{movie.rating?movie.rating:"Not available"}}</span>
                         </ion-row>
                         <ion-row class="movie-detail-text-row">
                             <span class="movie-detail-text-row-container">
                                 <div class="genre-text-movie">Genres:</div>
-                                <div class="genre-item-list">&nbsp;{{movie.genres}}</div>
-                           
+                                <div class="genre-item-list">&nbsp;{{movie.genres?movie.genres:"Not available"}}</div>                          
                             </span>
                         </ion-row>
                     </ion-col>
-
                 </ion-row>
             </ion-grid>
         </ion-card-content>
