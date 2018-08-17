@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { MovieService } from '../../providers/movie-service';
 import { Movie } from '../../models/movie';
-import { MovieDetailPage } from '../../pages/movie-detail/movie-detail';
+import { MovieDetailPage } from '../movie-detail/movie-detail';
 
 @Component({
     selector: 'page-home',
@@ -12,27 +12,20 @@ export class HomePage {
     public currentTab = "latest";
     public movieList: Movie[];
     public topRatedMovieList: Movie[];
-    public loading: Loading;
+    public isLoading: boolean = false;
 
     constructor(public navCtrl: NavController,
         public movieService: MovieService,
-        private alertController: AlertController,
-        public loadingCtrl: LoadingController) {
+        private alertController: AlertController) {
         this.movieList = [];
         this.topRatedMovieList = [];
-
         this.loadMovies(false);
     }
-
     private loadMovies(isTopRated) {
-
         if (!this.movieList.length || !this.topRatedMovieList.length) {
-            this.loading = this.loadingCtrl.create({
-                cssClass: 'activity-detail-loading'
-            })
-            this.loading.present();
+            this.isLoading = true;
             this.movieService.getMovies(isTopRated).subscribe(movies => {
-                    this.loading.dismiss();
+                    this.isLoading = false;
                     if (this.currentTab == "latest") {
                         this.movieList = movies;
                     } else {
@@ -40,14 +33,13 @@ export class HomePage {
                     }
                 },
                 err => {
-                    this.loading.dismiss();
+                    this.isLoading = false;
                     this.alertController.create({
                         title: 'Error',
                         subTitle: 'Unable to fetch movies.\nPlease try again later.',
                         buttons: ['OK']
                     }, ).present()
-                },
-
+                }
             );
         }
     }
