@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Movie } from '../../models/movie';
-import { NavController } from 'ionic-angular';
 
 @Component({
     selector: 'movies-grid',
@@ -10,7 +9,7 @@ export class MoviesGridComponent {
     @Input() movies: Movie[];
     @Input() parentComponent: any;
 
-    constructor(public navCtrl: NavController) {}
+    constructor() {}
 
     cardTapped(movie: Movie) {
         if (this.parentComponent)

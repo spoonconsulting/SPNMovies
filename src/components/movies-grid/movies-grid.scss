@@ -18,5 +18,8 @@
 
 .movie-card-description{
     margin:5px;
-    height: 50px;;
+    height: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, LoadingController } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
@@ -12,6 +12,7 @@ import { MoviesGridComponent } from '../components/movies-grid/movies-grid';
 import { HttpClientModule }    from '@angular/common/http';
 import { MovieService } from '../providers/movie-service';
 import { MovieDetailPage } from '../pages/movie-detail/movie-detail';
+import { CustomLoading } from '../components/custom-loader/customLoading';
 
 library.add(faStar);
 
@@ -21,6 +22,8 @@ library.add(faStar);
     HomePage,
     MoviesGridComponent,
     MovieDetailPage
+    MovieDetailPage,
+    CustomLoading
   ],
   imports: [
     BrowserModule,
@@ -33,12 +36,16 @@ library.add(faStar);
     MyApp,
     HomePage,
     MovieDetailPage
+    MovieDetailPage,
+    CustomLoading
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MovieService
+    MovieService,
+    LoadingController,
   ]
 })
 export class AppModule {}
