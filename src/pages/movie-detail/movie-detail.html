@@ -4,11 +4,12 @@
 <ion-fab top right>
     <ion-icon class="search-option" name="search"></ion-icon>
 </ion-fab>
+<ion-header class="movie-detail-navbar"></ion-header>
 <ion-content style="background-color: rgb(241, 241, 241)">
     <div class="background-image-container" [style.background-image]="'url('+movie.backgroundImage+')'">
         <div class="movie-title-on-background">{{movie.title}}</div>
     </div>
-    <button ion-button icon-start class="add-favorite-button">
+    <button ion-button icon-start class="add-favorite-button" (click)="saveToFavorite()">
         <ion-icon name="star" class="favorite-star-button-icon"></ion-icon>
         <p>Add to favorites</p>
     </button>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable'
 import { Movie } from '../models/movie';
+import { DatabaseService } from '../providers/database-service'
 
 @Injectable()
 export class MovieService {
@@ -9,7 +10,7 @@ export class MovieService {
     movieUrlByRating = "https://yts.am/api/v2/list_movies.json?sort_by=rating";
     movieUrl: string;
 
-    constructor(public http: HttpClient) {}
+    constructor(public http: HttpClient, public dbHandler: DatabaseService) {}
 
     getMovies(orderByRating: boolean): Observable < Movie[] > {
         this.movieUrl = orderByRating ? this.movieUrlByRating : this.movieUrlByLatest;
@@ -22,8 +23,8 @@ export class MovieService {
                 //  this.getMockMovies().subscribe(mockMovies=>{
                 //     observer.next(mockMovies);
                 //  },
-                err=> error(err);
-                  
+                err => error(err);
+
             })
 
         });
@@ -35,6 +36,15 @@ export class MovieService {
         moviesData.forEach(responseMovie => moviesToReturn.push(new Movie(responseMovie)));
         return moviesToReturn;
     }
+
+    saveToFavorite (movie: Movie) {
+       return this.dbHandler.save(movie);
+    }
+
+    getFavoriteMovies() {
+        this.dbHandler.fetch(Movie);
+    }
+
     
     // public getMockMovies(): Observable < Movie[] > {
     //     return new Observable(observer => {

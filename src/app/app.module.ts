@@ -13,6 +13,8 @@ import { HttpClientModule }    from '@angular/common/http';
 import { MovieService } from '../providers/movie-service';
 import { MovieDetailPage } from '../pages/movie-detail/movie-detail';
 import { CustomLoading } from '../components/custom-loader/customLoading';
+import { DatabaseService } from '../providers/database-service';
+import { SQLite } from '@ionic-native/sqlite';
 
 library.add(faStar);
 
@@ -21,7 +23,6 @@ library.add(faStar);
     MyApp,
     HomePage,
     MoviesGridComponent,
-    MovieDetailPage
     MovieDetailPage,
     CustomLoading
   ],
@@ -35,7 +36,6 @@ library.add(faStar);
   entryComponents: [
     MyApp,
     HomePage,
-    MovieDetailPage
     MovieDetailPage,
     CustomLoading
   ],
@@ -43,9 +43,10 @@ library.add(faStar);
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MovieService
     MovieService,
     LoadingController,
+    DatabaseService,
+    SQLite
   ]
 })
 export class AppModule {}

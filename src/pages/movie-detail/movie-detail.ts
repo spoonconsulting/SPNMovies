@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Movie } from '../../models/movie';
+import { MovieService } from '../../providers/movie-service';
 
 @IonicPage()
 @Component({
@@ -10,8 +11,12 @@ import { Movie } from '../../models/movie';
 export class MovieDetailPage {
 
     movie: Movie;
+    testers: any;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController,
+        public navParams: NavParams,
+        public movieService: MovieService) {
+
         this.movie = this.navParams.get('movie');
     }
 
@@ -22,5 +27,10 @@ export class MovieDetailPage {
     backButton() {
         this.navCtrl.pop();
     }
+
+    public saveToFavorite() {
+        this.movieService.saveToFavorite(this.movie).then(() => console.log("top net")).catch(e => console.error("pan resi save"));
+    }
+
 
 }

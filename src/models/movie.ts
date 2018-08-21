@@ -1,4 +1,6 @@
-export class Movie {
+import { Serializable } from '../providers/database-service'
+
+export class Movie implements Serializable{
     id: number;
     title: string;
     rating: number;
@@ -9,7 +11,7 @@ export class Movie {
     backgroundImage: string;
     mpaRating:string;
 
-    constructor(data: any) {
+    constructor(data?: any) {
         if (data) {
             this.id = data.id;
             this.title = data.title;
@@ -21,5 +23,17 @@ export class Movie {
             this.mpaRating=data.mpa_rating;
             this.genres=data.genres;
         }
+    }
+
+
+    serialize(){
+        let serializedArray = [];
+        Object.keys(this).forEach(key=>{
+            serializedArray.push({
+                attribute: key,
+                value: this[key]
+            })
+        })
+        return serializedArray;
     }
 }
