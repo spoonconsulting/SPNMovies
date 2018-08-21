@@ -1,5 +1,6 @@
 page-home {
     .segment-button {
-        background-color:map-get($colors, appTheme ) !important;
+        //background-color:map-get($colors, appTheme ) !important;
+        background-color:map-get($colors, appTheme) !important;
     }
 }
