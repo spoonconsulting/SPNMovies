@@ -46,4 +46,10 @@ export class HomePage {
     private didSelectMovie(movie: Movie) {
         this.navCtrl.push(MovieDetailPage, { "movie": movie });
     }
+
+    showMovie(){
+        this.movieService.getFavoriteMovies().then( movies=>
+            console.log(movies)
+        ).catch(err=> console.log("error catched"));
+    }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { resolveDefinition } from '../../node_modules/@angular/core/src/view/util';
 
 export interface Serializable {
     serialize(): { attribute: string, value: any }[];
@@ -18,7 +19,7 @@ export class DatabaseService {
         }).then((db: SQLiteObject) => this.database = db);
     }
 
-    private tableName(model){
+    private tableName(model) {
         return model.name ? model.name.toLowerCase() : model.constructor.name.toLowerCase();
     }
 
@@ -75,7 +76,7 @@ export class DatabaseService {
                 }
                 this.database.executeSql(statement, params)
                     .then((res) => {
-                        console.log("Executed SQL", statement, res);
+                        console.log("Executed SQL", statement, res.rows.item(0).title);
                         resolve(res);
                     })
                     .catch(e => {
@@ -87,10 +88,20 @@ export class DatabaseService {
         })
     }
 
-    fetch(entity) {
+    fetch(entity): Promise < any[] > {
         var selectStatement = "SELECT * FROM " + this.tableName(entity);
         console.log(selectStatement);
-        return this.runSql(selectStatement);
+        return new Promise((resolve, reject) => {
+            this.runSql(selectStatement).then((data: any) => {
+                let results = [];
+                console.log(data.rows)
+                for (var i = 0; i < data.rows.length; i++) {
+                    results.push(data.rows.item(i));
+                }
+                resolve(results);
+            }).catch(err => reject(err));
+        });
+
     }
 
 }

@@ -37,15 +37,26 @@ export class MovieService {
         return moviesToReturn;
     }
 
-    saveToFavorite (movie: Movie) {
-       return this.dbHandler.save(movie);
+    saveToFavorite(movie: Movie) {
+        return this.dbHandler.save(movie);
     }
 
-    getFavoriteMovies() {
-        this.dbHandler.fetch(Movie);
+    getFavoriteMovies(): Promise < Movie[] > {
+        return new Promise((resolve, reject) => {
+            this.dbHandler.fetch(Movie).then(data => {
+                let movies = [];
+                data.forEach(d => movies.push(new Movie(d)));
+                resolve(movies);
+            }).catch(err => reject(err));
+        });
     }
 
-    
+    isMovieFavorite(movie: Movie): Promise < boolean > {
+        //var movieID = movie.id;
+        this.dbHandler.fetch(movie);
+        return;
+    }
+
     // public getMockMovies(): Observable < Movie[] > {
     //     return new Observable(observer => {
     //         this.http.get('assets/data/movies.json').subscribe((response: any) => {
