@@ -1,10 +1,10 @@
 <ion-header>
     <ion-navbar color="appTheme">
         <ion-title>
-            SPN MOVIES
+           {{isShowingFavorite?'FAVORITES':'SPN MOVIES'}}
         </ion-title>
     </ion-navbar>
-    <ion-segment color="light" [(ngModel)]="currentTab">
+    <ion-segment color="light" [(ngModel)]="currentTab" *ngIf="!isShowingFavorite">
         <ion-segment-button value="latest" (click)="loadMovies(false)" >
             LATEST
         </ion-segment-button>
@@ -21,8 +21,8 @@
     <div class="movies-card-container" [ngStyle]="{'visibility':(currentTab!='latest')?'visible':'hidden'}">
         <movies-grid [movies]="topRatedMovieList" [parentComponent]="this"></movies-grid>
     </div>
-    <ion-fab right bottom>
-        <button ion-fab class="floating-favorite-button" (click)="showMovie()">
+    <ion-fab right bottom  *ngIf="!isShowingFavorite">
+        <button ion-fab class="floating-favorite-button" (click)="goToFavorites()">
             <ion-icon>
                 <div style="text-align:center">
                     <fa-icon [icon]="['fas','star']"></fa-icon>

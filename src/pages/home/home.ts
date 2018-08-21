@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, NavParams } from 'ionic-angular';
 import { MovieService } from '../../providers/movie-service';
 import { Movie } from '../../models/movie';
 import { MovieDetailPage } from '../movie-detail/movie-detail';
@@ -13,43 +13,59 @@ export class HomePage {
     public movieList: Movie[];
     public topRatedMovieList: Movie[];
     public isLoading: boolean = false;
+    public isShowingFavorite: boolean = false;
 
     constructor(public navCtrl: NavController,
         public movieService: MovieService,
-        private alertController: AlertController) {
+        private alertController: AlertController,
+        private navParams: NavParams) {
+        this.isShowingFavorite = this.navParams.get('showFavorite');
         this.movieList = [];
         this.topRatedMovieList = [];
         this.loadMovies(false);
     }
+
     private loadMovies(isTopRated) {
         if (!this.movieList.length || !this.topRatedMovieList.length) {
             this.isLoading = true;
-            this.movieService.getMovies(isTopRated).subscribe(movies => {
+            if (this.isShowingFavorite) {
+                this.movieService.getFavoriteMovies().then(favoriteMovies => {
+                    this.movieList = favoriteMovies;
                     this.isLoading = false;
-                    if (this.currentTab == "latest") {
-                        this.movieList = movies;
-                    } else {
-                        this.topRatedMovieList = movies;
-                    }
-                },
-                err => {
+                }).catch(err => {
                     this.isLoading = false;
-                    this.alertController.create({
-                        title: 'Error',
-                        subTitle: 'Unable to fetch movies.\nPlease try again later.',
-                        buttons: ['OK']
-                    }, ).present()
-                }
-            );
+                    this.showErrorAlert();
+                });
+            } else {
+                this.movieService.getMovies(isTopRated).subscribe(movies => {
+                        this.isLoading = false;
+                        if (this.currentTab == "latest") {
+                            this.movieList = movies;
+                        } else {
+                            this.topRatedMovieList = movies;
+                        }
+                    },
+                    err => {
+                        this.isLoading = false;
+                        this.showErrorAlert();
+                    });
+            }
         }
     }
+    
     private didSelectMovie(movie: Movie) {
         this.navCtrl.push(MovieDetailPage, { "movie": movie });
     }
 
-    showMovie(){
-        this.movieService.getFavoriteMovies().then( movies=>
-            console.log(movies)
-        ).catch(err=> console.log("error catched"));
+    goToFavorites() {
+        this.navCtrl.push(HomePage, { showFavorite: true });
+    }
+
+    showErrorAlert() {
+        this.alertController.create({
+            title: 'Error',
+            subTitle: 'Unable to fetch movies.\nPlease try again later.',
+            buttons: ['OK']
+        }, ).present()
     }
 }
