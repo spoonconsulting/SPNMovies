@@ -76,7 +76,7 @@ export class DatabaseService {
                 }
                 this.database.executeSql(statement, params)
                     .then((res) => {
-                        console.log("Executed SQL", statement, res.rows.item(0).title);
+                        console.log("Executed SQL", statement, res);
                         resolve(res);
                     })
                     .catch(e => {

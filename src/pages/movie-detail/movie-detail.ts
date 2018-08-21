@@ -11,13 +11,16 @@ import { MovieService } from '../../providers/movie-service';
 export class MovieDetailPage {
 
     movie: Movie;
-    testers: any;
+    isFavorite: boolean = false;
 
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
         public movieService: MovieService) {
 
         this.movie = this.navParams.get('movie');
+        this.movieService.isMovieFavorite(this.movie).then(
+            f => this.isFavorite = f
+        ).catch();
     }
 
     ionViewDidLoad() {
@@ -29,8 +32,9 @@ export class MovieDetailPage {
     }
 
     public saveToFavorite() {
-        this.movieService.saveToFavorite(this.movie).then(() => console.log("top net")).catch(e => console.error("pan resi save"));
+        this.movieService.saveToFavorite(this.movie)
+        .then(() => {this.isFavorite = true})
+        .catch(e => console.error("pan resi save ici "));
     }
-
 
 }

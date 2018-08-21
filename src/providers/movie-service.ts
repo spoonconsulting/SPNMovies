@@ -38,7 +38,7 @@ export class MovieService {
     }
 
     saveToFavorite(movie: Movie) {
-        return this.dbHandler.save(movie);
+        return this.dbHandler.save(movie).then().catch(err=> console.log(err + "ICI C'EST PARIS"));
     }
 
     getFavoriteMovies(): Promise < Movie[] > {
@@ -52,9 +52,11 @@ export class MovieService {
     }
 
     isMovieFavorite(movie: Movie): Promise < boolean > {
-        //var movieID = movie.id;
-        this.dbHandler.fetch(movie);
-        return;
+        return new Promise((resolve, reject) => {
+            this.dbHandler.fetch(Movie).then(movies => {
+                resolve(movies.filter(m=> m.id == movie.id).length > 0);
+            }).catch(err => reject(err));
+        });
     }
 
     // public getMockMovies(): Observable < Movie[] > {
