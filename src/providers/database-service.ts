@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
-import { resolveDefinition } from '../../node_modules/@angular/core/src/view/util';
 
 export interface Serializable {
     serialize(): { attribute: string, value: any }[];
@@ -8,6 +7,7 @@ export interface Serializable {
 
 @Injectable()
 export class DatabaseService {
+
     private database: SQLiteObject;
 
     constructor(private sqlite: SQLite) {}

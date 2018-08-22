@@ -52,11 +52,7 @@ export class HomePage {
             }
         }
     }
-    
-    private didSelectMovie(movie: Movie) {
-        this.navCtrl.push(MovieDetailPage, { "movie": movie });
-    }
-
+     
     goToFavorites() {
         this.navCtrl.push(HomePage, { showFavorite: true });
     }
