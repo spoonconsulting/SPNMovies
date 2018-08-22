@@ -1,20 +1,38 @@
 .segment-button {
-    background-color:map-get($colors, appTheme ) !important;
+    background-color: map-get($colors, appTheme) !important;
 }
 
-.floating-favorite-button{
+.floating-favorite-button {
     background-color: map-get($map: $colors, $key: appTheme);
 }
 
-.movies-card-container{
-    position:absolute;
-    overflow-y:scroll;
+.movies-card-container {
+    position: absolute;
+    overflow-y: scroll;
     width: 100%;
     height: 100%;
 }
 
 .activity-detail-loading {
-	.loading-wrapper{
-		background-color:rgba(0,0,0,0.8);
-	}	
+    .loading-wrapper {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+}
+
+.favorite-ion-fab {
+    z-index: 79;
+}
+
+.home-menu-image-container {
+    background: map-get($map: $colors, $key: appTheme);
+    width: 100%;
+    height: 150px;
+    color: white;
+    padding-left: 21px;
+    line-height: 142px;
+    font-size: 29px;
+}
+
+.home-menu-ion-item > ion-item {
+    color: map-get($map: $colors, $key: secondTint);
 }

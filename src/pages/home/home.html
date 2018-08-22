@@ -1,11 +1,23 @@
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+<ion-menu [content]="mycontent">
+    <ion-content>
+        <div class="home-menu-image-container">
+            SPN MOVIES
+        </div>
+        <ion-list class="home-menu-ion-item">
+            <ion-item>Search</ion-item>
+            <ion-item>Settings</ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
 <ion-header>
     <ion-navbar color="appTheme">
         <ion-title>
-           {{isShowingFavorite?'FAVORITES':'SPN MOVIES'}}
+            {{isShowingFavorite?'FAVORITES':'SPN MOVIES'}}
         </ion-title>
     </ion-navbar>
     <ion-segment color="light" [(ngModel)]="currentTab" *ngIf="!isShowingFavorite">
-        <ion-segment-button value="latest" (click)="loadMovies(false)" >
+        <ion-segment-button value="latest" (click)="loadMovies(false)">
             LATEST
         </ion-segment-button>
         <ion-segment-button value="topRated" (click)="loadMovies(true)">
@@ -21,7 +33,7 @@
     <div class="movies-card-container" [ngStyle]="{'visibility':(currentTab!='latest')?'visible':'hidden'}">
         <movies-grid [movies]="topRatedMovieList" [parentComponent]="this"></movies-grid>
     </div>
-    <ion-fab right bottom  *ngIf="!isShowingFavorite">
+    <ion-fab right bottom class="favorite-ion-fab" *ngIf="!isShowingFavorite">
         <button ion-fab class="floating-favorite-button" (click)="goToFavorites()">
             <ion-icon>
                 <div style="text-align:center">
