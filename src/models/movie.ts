@@ -1,4 +1,4 @@
-import { Serializable } from '../providers/database-service'
+import { Serializable } from '../providers/database-service';
 
 export class Movie implements Serializable {
     id: number;

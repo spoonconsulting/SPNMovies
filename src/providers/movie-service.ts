@@ -38,7 +38,7 @@ export class MovieService {
     }
 
     saveToFavorite(movie: Movie) {
-        return this.dbHandler.save(movie).then().catch(err=> console.log(err + "ICI C'EST PARIS"));
+        return this.dbHandler.save(movie).then().catch(err=> console.log(err + "HERE"));
     }
 
     getFavoriteMovies(): Promise < Movie[] > {
