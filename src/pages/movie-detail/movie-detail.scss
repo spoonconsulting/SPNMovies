@@ -4,7 +4,7 @@ page-movie-detail {
         width: 100%;
         height: 200px;
         margin: 0px;
-        position:relative;
+        position: relative;
     }
 
     .add-favorite-button {
@@ -25,7 +25,7 @@ page-movie-detail {
     .movie-detail-text-row {
         height: 25%;
         font-size: 16px;
-        color: rgb(137,137,137);
+        color: rgb(137, 137, 137);
         line-height: 37px;
     }
 
@@ -43,7 +43,7 @@ page-movie-detail {
     }
 
     .rating-icon {
-        color:black;
+        color: black;
         line-height: 36px;
         padding-right: 10px;
         font-size: 36px;
@@ -51,7 +51,7 @@ page-movie-detail {
 
     .movie-detail-description {
         font-size: 18px;
-        font-weight:bold;
+        font-weight: bold;
     }
 
     .arrow-back-button {
@@ -85,34 +85,46 @@ page-movie-detail {
         font-size: 28px;
     }
 
-    .movie-details-right{
-        margin-left:16px;
-        margin-top:6px;
+    .movie-details-right {
+        margin-left: 16px;
+        margin-top: 6px;
     }
 
-    .favorite-star-button-icon{
-            font-size: 42px;
-            padding-right: 27px;
-        
+    .favorite-star-button-icon {
+        font-size: 42px;
+        padding-right: 27px;
+
     }
 
-    .add-favorite-button p{
+    .add-favorite-button p {
         font-size: 18px;
     }
 
-    .genre-item-list{
-        white-space: nowrap; 
-        width: 147px; 
+    .genre-item-list {
+        white-space: nowrap;
+        width: 147px;
         overflow: hidden;
-        text-overflow: ellipsis; 
+        text-overflow: ellipsis;
     }
-    
-    .movie-detail-text-row-container > div {
+
+    .movie-detail-text-row-container>div {
         float: left;
     }
 
-    .genre-text-movie{
+    .genre-text-movie {
         color: black;
         font-weight: bold;
+    }
+
+    .custom-header-bar {
+        background:map-get($map: $colors, $key: secondTint);
+        height: 55px;
+        width: 100%;
+        position: absolute;
+        z-index: 2;
+    }
+
+    .movie-detail-navbar{
+        z-index:0;
     }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Movie } from '../../models/movie';
 import { MovieService } from '../../providers/movie-service';
@@ -12,10 +12,12 @@ export class MovieDetailPage {
 
     movie: Movie;
     isFavorite: boolean = false;
+    headerVisible: boolean = false;
 
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
-        public movieService: MovieService) {
+        public movieService: MovieService,
+        public changeDetectorRef: ChangeDetectorRef) {
 
         this.movie = this.navParams.get('movie');
         this.movieService.isMovieFavorite(this.movie).then(
@@ -37,4 +39,12 @@ export class MovieDetailPage {
         .catch(e => console.error("pan resi save ici "));
     }
 
+    onScroll(event) {
+        if (event.directionY == "up") {
+          this.headerVisible = false;
+        } else {
+          this.headerVisible = true;
+        }
+        this.changeDetectorRef.detectChanges();
+      }
 }
