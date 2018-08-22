@@ -64,4 +64,8 @@ export class HomePage {
             buttons: ['OK']
         }, ).present()
     }
+
+    private didSelectMovie(movie: Movie){
+        this.navCtrl.push(MovieDetailPage, {"movie":movie});
+    }
 }
