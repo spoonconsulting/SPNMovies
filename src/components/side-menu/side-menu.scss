@@ -1,0 +1,15 @@
+side-menu {
+    .home-menu-image-container {
+        background: url(../../assets/imgs/bkg-mount.jpg);
+        width: 100%;
+        height: 150px;
+        color: white;
+        padding-left: 21px;
+        line-height: 208px;
+        font-size: 29px;
+    }
+    
+    .home-menu-ion-item > ion-item {
+        color: map-get($map: $colors, $key: secondTint);
+    }
+}

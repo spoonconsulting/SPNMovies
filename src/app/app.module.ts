@@ -15,6 +15,7 @@ import { MovieDetailPage } from '../pages/movie-detail/movie-detail';
 import { CustomLoading } from '../components/custom-loader/customLoading';
 import { DatabaseService } from '../providers/database-service';
 import { SQLite } from '@ionic-native/sqlite';
+import { SideMenu } from '../components/side-menu/side-menu';
 
 library.add(faStar);
 
@@ -25,6 +26,7 @@ library.add(faStar);
     MoviesGridComponent,
     MovieDetailPage,
     CustomLoading
+    SideMenu,
   ],
   imports: [
     BrowserModule,
