@@ -59,6 +59,24 @@ export class MovieService {
         });
     }
 
+    searchMovie(queryWord: string):Observable < Movie[] >{
+        let searchUrl:string = this.movieUrlByLatest + "?query_term=" +queryWord;
+        return new Observable(observer => {
+            this.http.get(searchUrl).subscribe((response: any) => {
+                if (!response.data)
+                    return observer.error();
+                observer.next(this.serializeMovies(response));
+            }, error => {
+                //  this.getMockMovies().subscribe(mockMovies=>{
+                //     observer.next(mockMovies);
+                //  },
+                err => error(err);
+
+            })
+
+        });
+    }
+
     // public getMockMovies(): Observable < Movie[] > {
     //     return new Observable(observer => {
     //         this.http.get('assets/data/movies.json').subscribe((response: any) => {

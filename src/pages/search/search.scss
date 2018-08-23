@@ -1,0 +1,28 @@
+page-search {
+    .toolbar-background{
+        background: map-get($map: $colors, $key:appTheme);
+    }
+
+    .toolbar-title, .back-button{
+        color: white;
+    }
+
+    .search-bar-style{
+        padding: 8px;
+        padding-top: 20px;
+    }
+
+    .search-button-search-page{
+        font-size: 18px;
+        width: 95.4%;
+        margin-left: 2.45%;
+        margin-top: 10px;
+        height: 42px;
+        background-color: map-get($map: $colors, $key: appTheme);
+        box-shadow: none;
+    }
+
+    .scroll-content{
+        padding:0px !important;
+    }
+}

@@ -3,6 +3,7 @@ import { NavController, AlertController, NavParams } from 'ionic-angular';
 import { MovieService } from '../../providers/movie-service';
 import { Movie } from '../../models/movie';
 import { MovieDetailPage } from '../movie-detail/movie-detail';
+import { SearchPage } from '../search/search';
 
 @Component({
     selector: 'page-home',

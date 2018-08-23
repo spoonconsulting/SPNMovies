@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>SEARCH</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <custom-loader [active]="isLoading"></custom-loader>
+    <ion-searchbar class="search-bar-style"
+      [(ngModel)]="titleInput"
+      [showCancelButton]="shouldShowCancel"
+      (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+    <!--(ionInput)="onInput($event)"-->
+    <button ion-button icon-start (click)="searchMovies(titleInput)" class="search-button-search-page">Search</button>
+    <movies-grid [movies]="movies" [parentComponent]="this"></movies-grid>
+</ion-content>
