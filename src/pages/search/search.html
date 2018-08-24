@@ -4,6 +4,7 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
+    <custom-loader [active]="isLoading"></custom-loader>
     <ion-searchbar class="search-bar-style" [(ngModel)]="titleInput" [showCancelButton]="shouldShowCancel" (ionCancel)="onCancel($event)">
     </ion-searchbar>
     <!--(ionInput)="onInput($event)"-->

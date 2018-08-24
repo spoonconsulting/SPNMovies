@@ -12,16 +12,21 @@ import { SearchResult } from '../search-result/search-result';
 export class SearchPage {
 
     movies: Movie[];
+    isLoading: boolean = false;
 
     constructor(public movieService: MovieService, public navController: NavController) {}
 
     searchMovies(queryWord: string) {
+        this.isLoading = true;
         if (!(queryWord == null || queryWord == '')) {
             this.movies = [];
             this.movieService.searchMovie(queryWord).subscribe(
-                (moviesList: Movie[]) => { this.movies = moviesList
+                (moviesList: Movie[]) => { 
+                    this.isLoading = false;
+                    this.movies = moviesList
                     this.navController.push(SearchResult, { 'movies': this.movies });});
         } else {
+            this.isLoading=false;
             this.movies = [];
             this.navController.push(SearchResult, { 'movies': this.movies });
         }     
