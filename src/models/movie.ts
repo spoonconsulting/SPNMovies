@@ -5,6 +5,7 @@ export class Movie implements Serializable {
     title: string;
     rating: number;
     genres: string;
+    summary:string;
     description: string;
     coverImage: string;
     duration: string;
@@ -19,6 +20,7 @@ export class Movie implements Serializable {
             this.coverImage = data.coverImage || data.medium_cover_image;
             this.backgroundImage = data.backgroundImage || data.background_image_original;
             this.rating = data.rating;
+            this.summary = data.summary;
             this.duration = data.runtime;
             this.mpaRating = data.mpaRating || data.mpa_rating;
             this.genres = (typeof data.genres === typeof []) ? data.genres.join(",") : data.genres;
