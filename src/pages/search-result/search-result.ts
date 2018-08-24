@@ -18,5 +18,5 @@ export class SearchResult {
   private didSelectMovie(movie: Movie){
     this.navController.push(MovieDetailPage, {"movie":movie});
   }
-
+  
 }

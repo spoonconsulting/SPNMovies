@@ -6,7 +6,7 @@
     <ion-icon class="search-option" name="search"></ion-icon>
 </ion-fab>
 <ion-header class="movie-detail-navbar"></ion-header>
-<ion-content style="background-color: rgb(241, 241, 241)"  (ionScroll)="onScroll($event)">
+<ion-content style="background-color: rgb(241, 241, 241)" (ionScroll)="onScroll($event)">
     <div class="background-image-container" [style.background-image]="'url('+movie.backgroundImage+')'">
         <div class="movie-title-on-background">{{movie.title}}</div>
     </div>
@@ -28,7 +28,7 @@
                             </ion-icon><span>{{movie.duration?movie.duration:"Not available"}} minutes</span>
                         </ion-row>
                         <ion-row class="movie-detail-text-row">
-                                <ion-icon class="rating-icon" name="information-circle"></ion-icon>
+                            <ion-icon class="rating-icon" name="information-circle"></ion-icon>
                             <span>{{movie.mpaRating?movie.mpaRating:"Not available"}}</span>
                         </ion-row>
                         <ion-row class="movie-detail-text-row">
