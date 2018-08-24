@@ -3,7 +3,6 @@ import { IonicPage } from 'ionic-angular';
 import { Movie } from '../../models/movie';
 import { MovieService } from '../../providers/movie-service';
 
-@IonicPage()
 @Component({
     selector: 'page-search',
     templateUrl: 'search.html',
