@@ -1,0 +1,40 @@
+page-search-result {
+    .label{
+        margin:0px;
+    }
+    .toolbar-background {
+        background: map-get($map: $colors, $key:appTheme);
+    }
+
+    .toolbar-title,.back-button {
+        color: white;
+    }
+
+    .content {
+        background: rgb(219, 219, 219);
+    }
+    .movie-card-list {
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+    }
+
+    .movie-card-content-list {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .image-container-list {
+        height: 78px;
+    }
+
+    .movie-card-description-list {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .search-result-content{
+        padding: 3px;
+    }
+}

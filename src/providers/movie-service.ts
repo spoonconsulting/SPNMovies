@@ -33,12 +33,14 @@ export class MovieService {
     private serializeMovies(response: any): Movie[] {
         let moviesData = response.data.movies;
         let moviesToReturn = [];
-        moviesData.forEach(responseMovie => moviesToReturn.push(new Movie(responseMovie)));
+        if (moviesData != undefined) {
+            moviesData.forEach(responseMovie => moviesToReturn.push(new Movie(responseMovie)));
+        }
         return moviesToReturn;
     }
 
     saveToFavorite(movie: Movie) {
-        return this.dbHandler.save(movie).then().catch(err=> console.log(err + "HERE"));
+        return this.dbHandler.save(movie).then().catch(err => console.log(err + "HERE"));
     }
 
     getFavoriteMovies(): Promise < Movie[] > {
@@ -77,15 +79,15 @@ export class MovieService {
         });
     }
 
-    // public getMockMovies(): Observable < Movie[] > {
-    //     return new Observable(observer => {
-    //         this.http.get('assets/data/movies.json').subscribe((response: any) => {
-    //             if (!response.data)
-    //                 return observer.error();
-    //             observer.next(this.serializeMovies(response));
-    //         }, error => observer.error(error));
+    public getMockMovies(): Observable < Movie[] > {
+        return new Observable(observer => {
+            this.http.get('assets/data/movies.json').subscribe((response: any) => {
+                if (!response.data)
+                    return observer.error();
+                observer.next(this.serializeMovies(response));
+            }, error => observer.error(error));
 
-    //     });
-    // }
+        });
+    }
 
 }

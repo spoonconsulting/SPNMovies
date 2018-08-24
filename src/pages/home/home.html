@@ -3,6 +3,7 @@
     <ion-navbar color="appTheme">
         <ion-title>
             {{isShowingFavorite?'FAVORITES':'SPN MOVIES'}}
+            <ion-icon name="search" class="search-icon-glass" (click)="onSearchIconTapped()"></ion-icon>
         </ion-title>
     </ion-navbar>
     <ion-segment color="light" [(ngModel)]="currentTab" *ngIf="!isShowingFavorite">

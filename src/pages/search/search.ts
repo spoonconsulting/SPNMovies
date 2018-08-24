@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
 import { Movie } from '../../models/movie';
 import { MovieService } from '../../providers/movie-service';
+import { NavController } from 'ionic-angular';
+import { SearchResult } from '../search-result/search-result';
 
 @Component({
     selector: 'page-search',
@@ -11,26 +12,18 @@ import { MovieService } from '../../providers/movie-service';
 export class SearchPage {
 
     movies: Movie[];
-    public titleInput;
-    public isLoading: boolean = false;
 
-    constructor(public movieService: MovieService) {}
+    constructor(public movieService: MovieService, public navController: NavController) {}
 
     searchMovies(queryWord: string) {
-        this.isLoading = true;
         if (!(queryWord == null || queryWord == '')) {
-            this.isLoading = true;
             this.movies = [];
             this.movieService.searchMovie(queryWord).subscribe(
-                moviesList => {
-                    this.isLoading = false;
-                    moviesList.forEach(m => this.movies.push(m));
-                }
-            );
+                (moviesList: Movie[]) => { this.movies = moviesList
+                    this.navController.push(SearchResult, { 'movies': this.movies });});
         } else {
-            this.isLoading = false;
             this.movies = [];
-        }
+            this.navController.push(SearchResult, { 'movies': this.movies });
+        }     
     }
-
 }

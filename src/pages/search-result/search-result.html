@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>SEARCH RESULTS</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="search-result-content">
+    <ion-list>
+        <div ion-item *ngFor="let movie of movies" (click)="didSelectMovie(movie)">
+            <ion-grid class="movie-detail-grid">
+                <ion-row class="movie-detail-grid-detail-container">
+                    <ion-col col-3>
+                        <img class="image-container-list" src="{{movie.coverImage}}" />
+                    </ion-col>
+                    <ion-col>
+                        <ion-row><div class="movie-card-description-list"> {{movie.title}}</div></ion-row>
+                        <ion-row><div class="movie-card-description-list"><p>{{movie.summary}}</p></div></ion-row>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </ion-list>
+</ion-content>

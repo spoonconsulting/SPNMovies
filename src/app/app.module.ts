@@ -17,6 +17,8 @@ import { DatabaseService } from '../providers/database-service';
 import { SQLite } from '@ionic-native/sqlite';
 import { SideMenu } from '../components/side-menu/side-menu';
 import { SearchPage } from '../pages/search/search';
+import { SearchResult } from '../pages/search-result/search-result';
+import { MovieList} from '../components/movie-list/movie-list';
 
 library.add(faStar);
 
@@ -28,7 +30,9 @@ library.add(faStar);
     MovieDetailPage,
     CustomLoading,
     SideMenu,
-    SearchPage
+    SearchPage,
+    SearchResult,
+    MovieList
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ library.add(faStar);
     HomePage,
     MovieDetailPage,
     CustomLoading,
-    SearchPage
+    SearchPage,
+    SearchResult
   ],
   providers: [
     StatusBar,
