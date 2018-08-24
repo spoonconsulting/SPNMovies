@@ -69,6 +69,7 @@ export class HomePage {
     private didSelectMovie(movie: Movie){
         this.navCtrl.push(MovieDetailPage, {"movie":movie});
     }
+
     onSearchIconTapped(){    
         this.navCtrl.push(SearchPage);
     }
