@@ -1,9 +1,9 @@
 <div class="custom-header-bar" *ngIf="headerVisible"></div>
 <ion-fab left-top>
-    <ion-icon class="arrow-back-button" name="arrow-back" (click)="backButton()"></ion-icon>
+    <ion-icon class="arrow-back-button" name="arrow-back" (click)="goBack()"></ion-icon>
 </ion-fab>
 <ion-fab top right>
-    <ion-icon class="search-option" name="search"></ion-icon>
+    <ion-icon class="search-option" name="search" (click)="searchMovie()"></ion-icon>
 </ion-fab>
 <ion-header class="movie-detail-navbar"></ion-header>
 <ion-content style="background-color: rgb(241, 241, 241)" (ionScroll)="onScroll($event)">
