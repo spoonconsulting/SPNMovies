@@ -1,9 +1,9 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Movie } from '../../models/movie';
 import { MovieService } from '../../providers/movie-service';
+import { SearchPage } from '../search/search';
 
-@IonicPage()
 @Component({
     selector: 'page-movie-detail',
     templateUrl: 'movie-detail.html',
@@ -17,34 +17,34 @@ export class MovieDetailPage {
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
         public movieService: MovieService,
-        public changeDetectorRef: ChangeDetectorRef) {
-
+        private alertController: AlertController) {
         this.movie = this.navParams.get('movie');
-        this.movieService.isMovieFavorite(this.movie).then(
-            f => this.isFavorite = f
-        ).catch();
+        this.movieService.isMovieFavorite(this.movie).then(f => this.isFavorite = f).catch(err=> console.error(err));
     }
 
-    ionViewDidLoad() {
-        console.log('');
-    }
-
-    backButton() {
+    goBack() {
         this.navCtrl.pop();
     }
 
     public saveToFavorite() {
         this.movieService.saveToFavorite(this.movie)
         .then(() => {this.isFavorite = true})
-        .catch(e => console.error("pan resi save ici "));
+        .catch(e => this.showErrorAlert());
+    }
+
+    searchMovie(){
+        this.navCtrl.push(SearchPage);
     }
 
     onScroll(event) {
-        if (event.directionY == "up") {
-          this.headerVisible = false;
-        } else {
-          this.headerVisible = true;
-        }
-        this.changeDetectorRef.detectChanges();
-      }
+        this.headerVisible = event.directionY != "up";   
+    }
+
+    showErrorAlert() {
+        this.alertController.create({
+            title: 'Error',
+            subTitle: 'Unable to fetch movies.\nPlease try again later.',
+            buttons: ['OK']
+        }, ).present()
+    }
 }

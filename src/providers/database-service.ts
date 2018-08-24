@@ -65,8 +65,7 @@ export class DatabaseService {
         return new Promise((resolve, reject) => {
             if (!( < any > window).cordova) {
                 console.warn("no cordova..aborting");
-                reject(new Error());
-                return;
+                throw new Error();
             }
             this.openDatabase().then(() => {
                 if (!this.database) {

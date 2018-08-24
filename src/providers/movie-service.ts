@@ -57,7 +57,7 @@ export class MovieService {
         return new Promise((resolve, reject) => {
             this.dbHandler.fetch(Movie).then(movies => {
                 resolve(movies.filter(m=> m.id == movie.id).length > 0);
-            }).catch(err => reject(err));
+            }).catch(err => resolve(false));
         });
     }
 
