@@ -12,11 +12,20 @@
                         <img class="image-container-list" src="{{movie.coverImage}}" />
                     </ion-col>
                     <ion-col class="search-result-row-description-container">
-                        <ion-row><div class="movie-card-description-list"> {{movie.title}}</div></ion-row>
-                        <ion-row><div class="movie-card-description-summary"><p>{{movie.summary}}</p></div></ion-row>
+                        <ion-row>
+                            <div class="movie-card-description-list"> {{movie.title}}</div>
+                        </ion-row>
+                        <ion-row>
+                            <div class="movie-card-description-summary">
+                                <p>{{movie.summary}}</p>
+                            </div>
+                        </ion-row>
                     </ion-col>
                 </ion-row>
             </ion-grid>
         </div>
+        <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+            <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
     </ion-list>
 </ion-content>
