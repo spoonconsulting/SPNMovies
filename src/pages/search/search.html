@@ -8,5 +8,48 @@
     <ion-searchbar class="search-bar-style" [(ngModel)]="titleInput" [showCancelButton]="shouldShowCancel" (ionCancel)="onCancel($event)">
     </ion-searchbar>
     <!--(ionInput)="onInput($event)"-->
-    <button ion-button icon-start (click)="searchMovies(titleInput)" class="search-button-search-page">Search</button>
+    <ion-item>
+        <ion-label>Genre</ion-label>
+        <ion-select [(ngModel)]="genre">
+            <ion-option value="comdedy">Comedy</ion-option>
+            <ion-option value="sci-fi">Sci-Fi</ion-option>
+            <ion-option value="horror">Horror</ion-option>
+            <ion-option value="romance">Romance</ion-option>
+            <ion-option value="action">Action</ion-option>
+            <ion-option value="thriller">Thriller</ion-option>
+            <ion-option value="drama">Drama</ion-option>
+            <ion-option value="mystery">Mystery</ion-option>
+            <ion-option value="crime">Crime</ion-option>
+            <ion-option value="animantion">Animation</ion-option>
+            <ion-option value="adventure">Adventure</ion-option>
+            <ion-option value="fantasy">Fantasy</ion-option>
+            <ion-option value="comedy-romance">Comdedy-Romance</ion-option>
+            <ion-option value="action-comedy">Action-Comedy</ion-option>
+            <ion-option value="superhero">Super Hero</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Minimum Rating</ion-label>
+        <ion-select [(ngModel)]="rating">
+            <ion-option value="0">0</ion-option>
+            <ion-option value="1">1</ion-option>
+            <ion-option value="2">2</ion-option>
+            <ion-option value="3">3</ion-option>
+            <ion-option value="4">4</ion-option>
+            <ion-option value="5">5</ion-option>
+            <ion-option value="6">6</ion-option>
+            <ion-option value="7">7</ion-option>
+            <ion-option value="8">8</ion-option>
+            <ion-option value="9">9</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Sort By</ion-label>
+        <ion-select [(ngModel)]="sorting">
+            <ion-option value="title">Title</ion-option>
+            <ion-option value="year">Year</ion-option>
+            <ion-option value="rating">Rating</ion-option>
+        </ion-select>
+    </ion-item>
+    <button ion-button icon-start (click)="searchMovies(titleInput,genre,rating,sorting)" class="search-button-search-page">Search</button>
 </ion-content>

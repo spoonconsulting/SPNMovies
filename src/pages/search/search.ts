@@ -16,19 +16,22 @@ export class SearchPage {
 
     constructor(public movieService: MovieService, public navController: NavController) {}
 
-    searchMovies(queryWord: string) {
+    searchMovies(queryWord: string, genre: string, rating: string, sorting: string) {
+        console.log(genre + " " + rating + " " + sorting);
         this.isLoading = true;
         if (!(queryWord == null || queryWord == '')) {
             this.movies = [];
-            this.movieService.searchMovie(queryWord).subscribe(
-                (moviesList: Movie[]) => { 
+            this.movieService.searchMovie(queryWord, genre, rating, sorting,1).subscribe(
+                (moviesList: Movie[]) => {
                     this.isLoading = false;
                     this.movies = moviesList
-                    this.navController.push(SearchResult, { 'movies': this.movies });});
+                    this.navController.push(SearchResult, { 'movies': this.movies });
+                });
         } else {
-            this.isLoading=false;
+            this.isLoading = false;
             this.movies = [];
             this.navController.push(SearchResult, { 'movies': this.movies });
-        }     
+        }
     }
+
 }
