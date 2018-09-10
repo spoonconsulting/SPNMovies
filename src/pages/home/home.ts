@@ -86,7 +86,7 @@ export class HomePage {
                 this.movieService.searchMovie(this.movieService.queryWording, '', '', '', ++this.page)
                 .subscribe(movies => movies.forEach(m=>this.movieList.push(m)));
                 resolve();
-            }, 500);
+            });
         })
     }
 }

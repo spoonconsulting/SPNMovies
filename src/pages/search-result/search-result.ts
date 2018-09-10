@@ -35,7 +35,7 @@ export class SearchResult {
                 this.movieService.searchMovie(this.query,this.genre,this.rating, this.sorting, ++this.page)
                 .subscribe(movies => movies.forEach(m=>this.movies.push(m)));;
                 resolve();
-            }, 500);
+            });
         })
     }
     
