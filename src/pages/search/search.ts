@@ -27,7 +27,12 @@ export class SearchPage {
                 (moviesList: Movie[]) => {
                     this.isLoading = false;
                     this.movies = moviesList
-                    this.navController.push(SearchResult, { 'movies': this.movies });
+                    this.navController.push(SearchResult, { 'movies': this.movies,
+                                                            'query':queryWord,
+                                                            'genre':genre,
+                                                            'rating':rating,
+                                                            'sorting':sorting
+                                                          });
                 });
         } else {
             this.isLoading = false;

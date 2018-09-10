@@ -12,9 +12,17 @@ export class SearchResult {
 
     movies: Movie[];
     page:number=1;
+    query:string;
+    genre:string;
+    rating:string;
+    sorting:string;
 
     constructor(public navController: NavController, public navParams: NavParams, public movieService: MovieService) {
         this.movies = this.navParams.get('movies');
+        this.query = this.navParams.get('query');
+        this.genre = this.navParams.get('genre');
+        this.rating = this.navParams.get('rating');
+        this.sorting = this.navParams.get('sorting');
     }
 
     private didSelectMovie(movie: Movie) {
@@ -24,7 +32,7 @@ export class SearchResult {
     doInfinite(): Promise < any > {
         return new Promise((resolve) => {
             setTimeout(() => {
-                this.movieService.searchMovie(this.movieService.queryWording, '', '', '', ++this.page)
+                this.movieService.searchMovie(this.query,this.genre,this.rating, this.sorting, ++this.page)
                 .subscribe(movies => movies.forEach(m=>this.movies.push(m)));;
                 resolve();
             }, 500);

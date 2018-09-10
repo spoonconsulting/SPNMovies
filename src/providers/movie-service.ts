@@ -9,7 +9,6 @@ export class MovieService {
     movieUrlByLatest = "https://yts.am/api/v2/list_movies.json?";
     movieUrlByRating = "https://yts.am/api/v2/list_movies.json?sort_by=rating";
     movieUrl: string;
-    queryWording:string='';
 
     constructor(public http: HttpClient, public dbHandler: DatabaseService) {}
 
@@ -63,9 +62,8 @@ export class MovieService {
     }
 
     searchMovie(queryWord: string, genre: string, rating: string, sorting: string,page:number): Observable < Movie[] > {
-        this.queryWording=queryWord;
         let searchUrl: string = this.movieUrlByLatest;
-        this.queryWording == null || this.queryWording == '' ? null : searchUrl += "query_term=" + queryWord;
+        if(queryWord) searchUrl += "query_term=" + queryWord;
         if(genre) searchUrl += '&gender=' + genre;
         if(rating) searchUrl += '&minimum_rating=' + rating;
         if(sorting) searchUrl += '&sort_by=' + sorting;
