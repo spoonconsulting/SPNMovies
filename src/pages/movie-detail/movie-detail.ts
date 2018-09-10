@@ -54,8 +54,9 @@ export class MovieDetailPage {
     }
 
     removeFromFavorites(){
-        this.movieService.removeFromFavorites(this.movie);
-        this.isFavorite = false;
+        this.movieService.removeFromFavorites(this.movie)
+        .then(()=>this.isFavorite = false)
+        .catch(e => this.showErrorAlert());
     }
 
 }

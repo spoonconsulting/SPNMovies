@@ -96,6 +96,6 @@ export class MovieService {
     }
 
     removeFromFavorites(movie:Movie){
-        return this.dbHandler.remove(movie).then().catch(err => console.log(err + "HERE"));
+        return this.dbHandler.remove(movie).then((resolve)=>resolve).catch(err => console.log(err));
     }
 }
