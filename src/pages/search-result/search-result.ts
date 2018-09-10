@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavParams, NavController } from 'ionic-angular';
 import { Movie } from '../../models/movie';
 import { MovieDetailPage } from '../../pages/movie-detail/movie-detail';
-import { SearchPage } from '../search/search';
 import { MovieService } from '../../providers/movie-service';
 
 @Component({
@@ -27,11 +26,12 @@ export class SearchResult {
         return new Promise((resolve) => {
             setTimeout(() => {
                 console.log(this.movieService.queryWording + "#########");
-                this.movieService.searchMovie(this.movieService.queryWording,'','','',++this.page)
-                .subscribe(movies=> movies.forEach(m=>this.movies.push(m)));
+                this.movieService.searchMovie(this.movieService.queryWording, '', '', '', ++this.page)
+                .subscribe(movies => movies.forEach(m=>this.movies.push(m)));;
                 console.log('Async operation has ended');
                 resolve();
             }, 500);
         })
     }
+    
 }

@@ -15,6 +15,7 @@ export class HomePage {
     public topRatedMovieList: Movie[];
     public isLoading: boolean = false;
     public isShowingFavorite: boolean = false;
+    public page:number=1;
     public gridView:boolean=true;
 
     constructor(public navCtrl: NavController,
@@ -77,5 +78,18 @@ export class HomePage {
 
     toggleView(){
         this.gridView = ! this.gridView;
+    }
+
+    doInfinite(): Promise < any > {
+        console.log('Begin async operation');
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                console.log(this.movieService.queryWording + "#########");
+                this.movieService.searchMovie(this.movieService.queryWording, '', '', '', ++this.page)
+                .subscribe(movies => movies.forEach(m=>this.movieList.push(m)));
+                console.log('Async operation has ended');
+                resolve();
+            }, 500);
+        })
     }
 }
