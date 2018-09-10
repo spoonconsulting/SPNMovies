@@ -32,6 +32,7 @@ export class MoviesGridComponent {
                         handler: () => {
                         this.parentComponent.movieService.removeFromFavorites(movie);
                        
+                        this.parentComponent.didRemoveMovie(movie);
                         }
                     }
                 ]
