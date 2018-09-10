@@ -1,7 +1,7 @@
 <ion-grid>
     <ion-row>
         <ion-col col-4 col-md-4 col-xl-3 *ngFor="let movie of movies">
-            <ion-card class="movie-card" (click)="cardTapped(movie)">
+            <ion-card class="movie-card" (click)="cardTapped(movie)" (press)="popOption(movie)">
                 <ion-card-content class="movie-card-content">
                     <div class="image-container" [style.background-image]="'url('+movie.coverImage+')'"></div>
                     <div class="movie-card-description"> {{movie.title}}</div>

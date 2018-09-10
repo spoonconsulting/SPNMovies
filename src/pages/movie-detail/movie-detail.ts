@@ -30,6 +30,7 @@ export class MovieDetailPage {
         this.movieService.saveToFavorite(this.movie)
         .then(() => {this.isFavorite = true})
         .catch(e => this.showErrorAlert());
+        this.isFavorite = true;
     }
 
     searchMovie(){
@@ -47,4 +48,14 @@ export class MovieDetailPage {
             buttons: ['OK']
         }, ).present()
     }
+
+    handleMovieDetailButtonClick(){
+        this.isFavorite?this.removeFromFavorites():this.saveToFavorite();
+    }
+
+    removeFromFavorites(){
+        this.movieService.removeFromFavorites(this.movie);
+        this.isFavorite = false;
+    }
+
 }

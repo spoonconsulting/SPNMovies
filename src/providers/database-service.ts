@@ -103,4 +103,13 @@ export class DatabaseService {
 
     }
 
+    remove(entity){
+        return this.createTable(entity).then(() => {
+            let deleteStatement = "DELETE FROM " + this.tableName(entity)+ " WHERE ";
+            let attributes = entity.serialize();
+            deleteStatement+= attributes[0].attribute+"=";
+            deleteStatement+="'"+ attributes[0].value+"'";
+            return this.runSql(deleteStatement);
+        });
+    }
 }
