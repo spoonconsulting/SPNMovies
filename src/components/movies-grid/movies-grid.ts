@@ -17,7 +17,7 @@ export class MoviesGridComponent {
             ( < any > this.parentComponent).didSelectMovie(movie);
     }
 
-    popOption(movie){
+    showConfirmation(movie){
         if(this.parentComponent.isShowingFavorite){
             let alert = this.alertCtrl.create({
                 title: 'Confirmation',
