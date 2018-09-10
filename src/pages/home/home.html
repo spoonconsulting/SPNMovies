@@ -18,10 +18,12 @@
 <ion-content>
     <custom-loader [active]="isLoading"></custom-loader>
     <div [ngStyle]="{'visibility':(currentTab=='latest')?'visible':'hidden'}" class="movies-card-container">
-        <movies-grid [movies]="movieList" [parentComponent]="this"></movies-grid>
+        <movies-grid [movies]="movieList" [parentComponent]="this" *ngIf="gridView"></movies-grid>
+        <movie-list [movies]="movieList"[parentComponent]="this" *ngIf="!gridView"></movie-list>
     </div>
     <div class="movies-card-container" [ngStyle]="{'visibility':(currentTab!='latest')?'visible':'hidden'}">
-        <movies-grid [movies]="topRatedMovieList" [parentComponent]="this"></movies-grid>
+        <movies-grid [movies]="topRatedMovieList" [parentComponent]="this" *ngIf="gridView"></movies-grid>
+        <movie-list [movies]="topRatedMovieList"[parentComponent]="this" *ngIf="!gridView"></movie-list>
     </div>
     <ion-fab right bottom class="favorite-ion-fab" *ngIf="!isShowingFavorite">
         <button ion-fab class="floating-favorite-button" (click)="goToFavorites()">

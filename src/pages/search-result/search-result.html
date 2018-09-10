@@ -4,28 +4,5 @@
     </ion-navbar>
 </ion-header>
 <ion-content class="search-result-content">
-    <ion-list>
-        <div ion-item *ngFor="let movie of movies" (click)="didSelectMovie(movie)">
-            <ion-grid class="movie-detail-grid">
-                <ion-row class="movie-detail-grid-detail-container">
-                    <ion-col col-3 class="movie-image-container-list-column">
-                        <img class="image-container-list" src="{{movie.coverImage}}" />
-                    </ion-col>
-                    <ion-col class="search-result-row-description-container">
-                        <ion-row>
-                            <div class="movie-card-description-list"> {{movie.title}}</div>
-                        </ion-row>
-                        <ion-row>
-                            <div class="movie-card-description-summary">
-                                <p>{{movie.summary}}</p>
-                            </div>
-                        </ion-row>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-        </div>
-        <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
-            <ion-infinite-scroll-content></ion-infinite-scroll-content>
-        </ion-infinite-scroll>
-    </ion-list>
+    <movie-list [movies]="movies" [parentComponent]="this"></movie-list>
 </ion-content>

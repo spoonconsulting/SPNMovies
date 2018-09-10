@@ -18,6 +18,7 @@ import { SQLite } from '@ionic-native/sqlite';
 import { SideMenu } from '../components/side-menu/side-menu';
 import { SearchPage } from '../pages/search/search';
 import { SearchResult } from '../pages/search-result/search-result';
+import { MovieListComponent } from '../components/movie-list/movie-list';
 
 library.add(faStar);
 
@@ -30,7 +31,8 @@ library.add(faStar);
     CustomLoading,
     SideMenu,
     SearchPage,
-    SearchResult
+    SearchResult,
+    MovieListComponent
   ],
   imports: [
     BrowserModule,

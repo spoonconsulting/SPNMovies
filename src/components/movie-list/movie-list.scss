@@ -1,0 +1,37 @@
+movie-list {
+    .movie-image-container-list-column {
+        max-width: 20%;
+    }
+
+    .image-container-list {
+        height: 78px;
+    }
+
+    .search-result-row-description-container {
+        overflow: hidden;
+    }
+
+    .movie-card-description-list {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .movie-card-description-summary {
+        margin-top: 5px;
+    }
+
+    .movie-card-description-summary>p {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        font-size: 12px;
+        color: #3a3a3a;
+        height: 44px;
+        overflow: hidden;
+        white-space: normal;
+    }
+    .item{
+        padding-left: 8px;
+    }
+}
