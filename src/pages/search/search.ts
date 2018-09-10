@@ -19,7 +19,10 @@ export class SearchPage {
     searchMovies(queryWord: string, genre: string, rating: string, sorting: string) {
         console.log(genre + " " + rating + " " + sorting);
         this.isLoading = true;
-        if (!(queryWord == null || queryWord == '')) {
+        if (!(queryWord == null || queryWord == '') ||
+            !(genre == null || genre == '') ||
+            !(rating == null || rating == '') ||
+            !(sorting == null || sorting == '')) {
             this.movies = [];
             this.movieService.searchMovie(queryWord, genre, rating, sorting,1).subscribe(
                 (moviesList: Movie[]) => {

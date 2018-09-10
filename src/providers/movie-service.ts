@@ -6,7 +6,7 @@ import { DatabaseService } from '../providers/database-service'
 
 @Injectable()
 export class MovieService {
-    movieUrlByLatest = "https://yts.am/api/v2/list_movies.json";
+    movieUrlByLatest = "https://yts.am/api/v2/list_movies.json?";
     movieUrlByRating = "https://yts.am/api/v2/list_movies.json?sort_by=rating";
     movieUrl: string;
     queryWording:string='';
@@ -64,11 +64,15 @@ export class MovieService {
 
     searchMovie(queryWord: string, genre: string, rating: string, sorting: string,page:number): Observable < Movie[] > {
         this.queryWording=queryWord;
-        let searchUrl: string = this.movieUrlByLatest + "?query_term=" + queryWord;
+        console.log(this.queryWording);
+        let searchUrl: string = this.movieUrlByLatest;
+        console.log(searchUrl);
+        this.queryWording == null || this.queryWording == '' ? null : searchUrl += "query_term=" + queryWord;
         genre == null || genre == '' ? null : searchUrl += '&gender=' + genre;
         rating == null || rating == '' ? null : searchUrl += '&minimum_rating=' + rating;
         sorting == null || sorting == '' ? null : searchUrl += '&sort_by=' + sorting;
         page == null? null:searchUrl+='&page='+page;
+        console.log(searchUrl);
         return new Observable(observer => {
             this.http.get(searchUrl).subscribe((response: any) => {
                 if (!response.data)
