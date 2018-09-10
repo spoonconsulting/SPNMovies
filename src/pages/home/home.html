@@ -3,6 +3,7 @@
     <ion-navbar color="appTheme">
         <ion-title>
             {{isShowingFavorite?'FAVORITES':'SPN MOVIES'}}
+            <ion-icon name="{{!gridView?'grid':'list'}}" (click)="toggleView()"  class="view-mode-icon"></ion-icon>
             <ion-icon name="search" class="search-icon-glass" (click)="onSearchIconTapped()"></ion-icon>
         </ion-title>
     </ion-navbar>
