@@ -89,4 +89,7 @@ export class HomePage {
             });
         })
     }
+    didRemoveMovie(movie: Movie){
+        this.movieList.splice(this.movieList.indexOf(movie),1);
+    }
 }

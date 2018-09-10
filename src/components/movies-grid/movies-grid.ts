@@ -30,7 +30,6 @@ export class MoviesGridComponent {
                     {
                         text: 'Yes',
                         handler: () => {
-                        this.parentComponent.movieList.splice(this.parentComponent.movieList.indexOf(movie),1);
                         this.parentComponent.movieService.removeFromFavorites(movie);
                        
                         }
