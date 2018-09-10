@@ -17,7 +17,6 @@ export class SearchPage {
     constructor(public movieService: MovieService, public navController: NavController) {}
 
     searchMovies(queryWord: string, genre: string, rating: string, sorting: string) {
-        console.log(genre + " " + rating + " " + sorting);
         this.isLoading = true;
         if (!(queryWord == null || queryWord == '') ||
             !(genre == null || genre == '') ||

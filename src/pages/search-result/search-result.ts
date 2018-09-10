@@ -22,13 +22,10 @@ export class SearchResult {
     }
 
     doInfinite(): Promise < any > {
-        console.log('Begin async operation');
         return new Promise((resolve) => {
             setTimeout(() => {
-                console.log(this.movieService.queryWording + "#########");
                 this.movieService.searchMovie(this.movieService.queryWording, '', '', '', ++this.page)
                 .subscribe(movies => movies.forEach(m=>this.movies.push(m)));;
-                console.log('Async operation has ended');
                 resolve();
             }, 500);
         })

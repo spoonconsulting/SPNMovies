@@ -25,9 +25,7 @@ export class MoviesGridComponent {
                 buttons: [
                     {
                         text: 'No',
-                        handler: () => {
-                            console.log('Cancel clicked');
-                        }
+                        handler: () => null
                     },
                     {
                         text: 'Yes',
@@ -41,6 +39,5 @@ export class MoviesGridComponent {
             })
             alert.present();
         }
-        console.log("hey hey");
     }
 }

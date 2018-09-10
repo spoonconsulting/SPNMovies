@@ -32,7 +32,6 @@ export class DatabaseService {
                 insertStatement += ",";
         })
         insertStatement = insertStatement + ")";
-        console.log(insertStatement);
         return this.runSql(insertStatement);
     }
 
@@ -56,7 +55,6 @@ export class DatabaseService {
                 params.push(att.value);
             })
             insertStatement = insertStatement + ")";
-            console.log(insertStatement);
             return this.runSql(insertStatement, params);
         });
     }
@@ -75,7 +73,6 @@ export class DatabaseService {
                 }
                 this.database.executeSql(statement, params)
                     .then((res) => {
-                        console.log("Executed SQL", statement, res);
                         resolve(res);
                     })
                     .catch(e => {
@@ -89,11 +86,9 @@ export class DatabaseService {
 
     fetch(entity): Promise < any[] > {
         var selectStatement = "SELECT * FROM " + this.tableName(entity);
-        console.log(selectStatement);
         return new Promise((resolve, reject) => {
             this.runSql(selectStatement).then((data: any) => {
                 let results = [];
-                console.log(data.rows)
                 for (var i = 0; i < data.rows.length; i++) {
                     results.push(data.rows.item(i));
                 }

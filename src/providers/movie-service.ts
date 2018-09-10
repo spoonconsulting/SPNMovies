@@ -64,15 +64,12 @@ export class MovieService {
 
     searchMovie(queryWord: string, genre: string, rating: string, sorting: string,page:number): Observable < Movie[] > {
         this.queryWording=queryWord;
-        console.log(this.queryWording);
         let searchUrl: string = this.movieUrlByLatest;
-        console.log(searchUrl);
         this.queryWording == null || this.queryWording == '' ? null : searchUrl += "query_term=" + queryWord;
         if(genre) searchUrl += '&gender=' + genre;
         if(rating) searchUrl += '&minimum_rating=' + rating;
         if(sorting) searchUrl += '&sort_by=' + sorting;
         if(page) searchUrl+='&page='+page;
-        console.log(searchUrl);
         return new Observable(observer => {
             this.http.get(searchUrl).subscribe((response: any) => {
                 if (!response.data)

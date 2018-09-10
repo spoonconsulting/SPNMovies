@@ -15,7 +15,6 @@ export class SideMenu {
         this.navCtrl.push(SearchPage);
         break;
       case "settings":
-        console.log("Go to Settings");
         break;
     }
   }
