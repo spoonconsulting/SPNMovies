@@ -15,6 +15,7 @@ export class HomePage {
     public topRatedMovieList: Movie[];
     public isLoading: boolean = false;
     public isShowingFavorite: boolean = false;
+    public gridView:boolean=true;
 
     constructor(public navCtrl: NavController,
         public movieService: MovieService,
@@ -72,5 +73,9 @@ export class HomePage {
 
     onSearchIconTapped(){    
         this.navCtrl.push(SearchPage);
+    }
+
+    toggleView(){
+        this.gridView = ! this.gridView;
     }
 }
