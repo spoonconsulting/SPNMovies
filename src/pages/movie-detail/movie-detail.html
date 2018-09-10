@@ -6,7 +6,7 @@
     <ion-icon class="search-option" name="search" (click)="searchMovie()"></ion-icon>
 </ion-fab>
 <ion-header class="movie-detail-navbar"></ion-header>
-<ion-content style="background-color: rgb(241, 241, 241)" (ionScroll)="onScroll($event)">
+<ion-content class="movie-detail-ion-content" (ionScroll)="onScroll($event)">
     <div class="background-image-container" [style.background-image]="'url('+movie.backgroundImage+')'">
         <div class="movie-title-on-background">{{movie.title}}</div>
     </div>
