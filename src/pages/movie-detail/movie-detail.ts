@@ -49,7 +49,7 @@ export class MovieDetailPage {
         }, ).present()
     }
 
-    handleMovieDetailButtonClick(){
+    updateFavoriteStatus(){
         this.isFavorite?this.removeFromFavorites():this.saveToFavorite();
     }
 

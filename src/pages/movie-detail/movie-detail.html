@@ -10,7 +10,7 @@
     <div class="background-image-container" [style.background-image]="'url('+movie.backgroundImage+')'">
         <div class="movie-title-on-background">{{movie.title}}</div>
     </div>
-    <button ion-button icon-start class="add-favorite-button" (click)="handleMovieDetailButtonClick()" >
+    <button ion-button icon-start class="add-favorite-button" (click)="updateFavoriteStatus()" >
         <ion-icon name="star" class="favorite-star-button-icon"></ion-icon>
         <p>{{isFavorite?'Remove from favorites':'Add to favorites'}}</p>
     </button>
