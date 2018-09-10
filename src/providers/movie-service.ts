@@ -68,10 +68,10 @@ export class MovieService {
         let searchUrl: string = this.movieUrlByLatest;
         console.log(searchUrl);
         this.queryWording == null || this.queryWording == '' ? null : searchUrl += "query_term=" + queryWord;
-        genre == null || genre == '' ? null : searchUrl += '&gender=' + genre;
-        rating == null || rating == '' ? null : searchUrl += '&minimum_rating=' + rating;
-        sorting == null || sorting == '' ? null : searchUrl += '&sort_by=' + sorting;
-        page == null? null:searchUrl+='&page='+page;
+        if(genre) searchUrl += '&gender=' + genre;
+        if(rating) searchUrl += '&minimum_rating=' + rating;
+        if(sorting) searchUrl += '&sort_by=' + sorting;
+        if(page) searchUrl+='&page='+page;
         console.log(searchUrl);
         return new Observable(observer => {
             this.http.get(searchUrl).subscribe((response: any) => {
